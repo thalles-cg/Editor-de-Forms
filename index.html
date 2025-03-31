@@ -38,10 +38,9 @@
                 </div>
                 <div class="property-option">
                   <label for="addColor">Cor</label>
-                  <input type="color" id="addColor" value="#FFFFFF"/>
+                  <input type="color" id="addColor" value="#FFFFFF" />
                 </div>
               </div>
-
               <div class="option-line dark">
                 <div class="property-option text">
                   <label for="addText">Texto:</label>
@@ -60,7 +59,7 @@
                     <option value="email">email</option>
                     <option value="password">password</option>
                     <option value="number">number</option>
-                    <option value="date" background-color="white">date</option>
+                    <option value="date">date</option>
                   </select>
                 </div>
               </div>
@@ -87,7 +86,12 @@
             <div class="option-line dark">
               <div class="property-option text">
                 <label for="titleText">Texto:</label>
-                <input type="text" id="titleText" maxlength="30" value="Título principal"/>
+                <input
+                  type="text"
+                  id="titleText"
+                  maxlength="30"
+                  value="Título principal"
+                />
               </div>
             </div>
             <div class="option-line">
@@ -110,6 +114,7 @@
               </div>
             </div>
           </div>
+        </div>
         <div class="properties-content">
           <h3 class="properties-category">Formulário</h3>
           <div class="category-desc">
@@ -209,7 +214,7 @@
             const menu = document.querySelector(".specific-properties");
             menu.classList.remove("active");
             elementoSelecionado = null;
-          } 
+          }
           novaDiv.remove();
         });
 
@@ -416,7 +421,8 @@
         const titulo = document.querySelector(".form-box-title h2");
         if (titulo) {
           titulo.style.fontSize = e.target.value + "px";
-          document.getElementById("titleSizeValue").textContent = e.target.value + "px";
+          document.getElementById("titleSizeValue").textContent =
+            e.target.value + "px";
         }
       }
       function atualizarCorTitulo(e) {
