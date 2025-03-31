@@ -1,0 +1,240 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #d1d1d1;
+}
+body {
+  width: 100%;
+  background-color: #1a1a1a;
+  overflow-x: hidden;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100vw;
+  vertical-align: middle;
+  background-color: #5865f2;
+  padding: 12px 0;
+  margin-bottom: 20px;
+}
+.logo {
+  font-size: 40px;
+}
+.navbar {
+  width: 85%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+.navbar ul a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+main {
+  width: 95vw;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 20px;
+  font-family: "Poppins", sans-serif;
+}
+.edit-field {
+  display: flex;
+  flex-direction: column;
+}
+.edit-field button {
+  background-color: #5865f2;
+  border: none;
+  border-radius: 9px 9px;
+  padding: 6px;
+}
+.edit-field button:hover {
+  cursor: pointer;
+}
+
+.properties {
+  background-color: #2a2a2a;
+  width: 250px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 9px 9px;
+  border: 1px solid #444;
+}
+.properties h2 {
+  color: #5865f2;
+  padding: 8px;
+  font-size: 20px;
+}
+.properties .specific-properties {
+  background-color: rgb(243, 236, 236);
+  display: none;
+}
+.specific-properties {
+  background-color: #1e1e1e !important;
+  padding: 1px;
+}
+.specific-properties.active {
+  display: block;
+}
+
+.properties label,
+.properties input {
+  color: #b0b0b0;
+}
+.category-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.option-line {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  min-height: 55px;
+}
+.option-line.dark {
+  background-color: #252525;
+}
+.option-line.dark label {
+  color: white;
+}
+.option-line input,
+.option-line select,
+.option-line select option {
+  color: black;
+}
+
+.properties-category {
+  border: none;
+  outline: solid 2px #5f638a;
+  padding: 4px;
+  margin-top: 10px;
+}
+.property-option {
+  padding: 0 10px;
+}
+.property-option.with-color {
+  display: flex;
+  justify-content: space-around;
+}
+.property-option.range {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.property-option input[type="color"] {
+  width: 20px;
+  height: 20px;
+}
+.form-box {
+  min-height: 500px;
+  padding: 20px 0;
+  min-width: 800px;
+  outline: 1px solid #5865f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #242424;
+  gap: 20px;
+}
+.form-box input {
+  display: block;
+}
+.form-box-title h2 {
+  font-size: 32px;
+}
+
+.edit-btn,
+.remove-btn {
+  transition: all 0.15s ease;
+  cursor: pointer;
+  width: 26px;
+  height: 26px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.edit-btn {
+  background-color: #5865f2;
+  color: white;
+  border: none;
+}
+.remove-btn {
+  color: white;
+  background-color: #ff4d4d;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+}
+.edit-icon {
+  color: white;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 2px 5px;
+  transition: background-color 0.15s ease;
+}
+.input-group input {
+  border: 3px solid;
+  border-radius: 10px;
+  padding: 0 6px;
+}
+input {
+  color: #000000;
+}
+.group-buttons {
+  margin: 5px 0 3px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.input-group:hover {
+  background-color: #333333;
+  outline: 1px solid #5865f2;
+  box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.4);
+}
+.input-group:hover .edit-btn,
+.input-group:hover .remove-btn {
+  display: flex;
+}
+
+.edit-btn:active,
+.remove-btn:active {
+  transform: scale(0.7);
+}
+
+.edit-btn:hover {
+  background-color: #4752c4;
+}
+.remove-btn:hover {
+  background-color: #e60000;
+}
+
+.general-properties .property-option {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.general-properties input[type="color"] {
+  margin-left: auto;
+}
