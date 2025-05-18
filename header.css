@@ -1,0 +1,96 @@
+section.form-box {
+  padding: 0;
+}
+main {
+  display: flex;
+  gap: 1.5em;
+}
+main .form-box {
+  flex-grow: 1;
+  margin-left: 6rem;
+}
+
+.sub-header {
+  width: 100%;
+}
+.sub-navbar {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 85%;
+  overflow-x: hidden;
+}
+.sub-navbar h1 {
+  margin-right: 1em;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em; 
+  height: 100%;
+}
+.logo.image {
+  margin: 0;
+  padding: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
+}
+
+.sub-navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1em;
+  flex: 1;
+  list-style: none;
+}
+.sub-navbar a {
+  text-decoration: none;
+}
+.property-option.addElement {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+  position: relative;
+}
+.input-elementText-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: .3em;
+  width: 100%;
+  align-items: centers;
+}
+.input-elementText-input input{
+  flex: 1;
+  border-radius: 0;
+  border: none;
+  height: 20px;
+}
+.addBtn {
+  width: 100%;
+  margin: 1em 0;
+}
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none; 
+    text-align: center;
+    padding-bottom: 0.8em;
+    position: absolute;
+    top: -2.2em;
+}
+
+.input-error {
+    border: 2px solid red !important;
+}
+
+.input-success {
+    border: 2px solid green !important;
+}
+input[type="file"]{
+  color: #d1d1d1;
+  text-align: left;
+} 
