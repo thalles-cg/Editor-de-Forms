@@ -8,23 +8,8 @@ document.querySelector("#elementsColor").addEventListener("input", mudarCorEleme
 document.querySelector("#elementsFontSize").addEventListener("input", mudarFonteElementos);
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
 document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
-document.querySelectorAll('.sub-navbar ul li').forEach((li) => {
-  if (li.querySelector('.remove-btn')) return;
 
-  const removeBtn = document.createElement("button");
-  removeBtn.classList.add("remove-btn");
-  removeBtn.textContent = "x";
 
-  removeBtn.addEventListener("click", (e) => {
-    e.stopPropagation(); 
-    li.remove();
-  });
-
-  li.style.position = "relative"; 
-  removeBtn.classList.add("remove-btn")
-
-  li.appendChild(removeBtn);
-});
 function verificarElemento(){
   const container = document.querySelector(".option-line.first");
   const input = document.querySelector("#elementText");
@@ -55,7 +40,18 @@ function adicionarElemento(){
     let a = document.createElement("a");
     a.setAttribute("href", "#")
     a.textContent = newElement.value;
+
+    let removeBtn = document.createElement("button");
+    removeBtn.classList.add("remove-btn");
+    removeBtn.textContent = "×"; 
+    
+    removeBtn.addEventListener("click", function(e) {
+      e.stopPropagation();
+      li.remove();
+    });
+
     li.appendChild(a);
+    li.appendChild(removeBtn)
     navbar_ul.appendChild(li);
     newElement.value = "";
   } 
