@@ -7,6 +7,7 @@ document.querySelector("#headerColor").addEventListener("input", mudarCorHeader)
 document.querySelector("#elementsColor").addEventListener("input", mudarCorElementos);
 document.querySelector("#elementsFontSize").addEventListener("input", mudarFonteElementos);
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
+document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
 
 function verificarElemento(){
   const container = document.querySelector(".option-line.first");
@@ -111,3 +112,10 @@ function mudarFonteElementos() {
   elementsSizeValue.textContent = document.querySelector("#elementsFontSize").value + "px"; 
 }
 
+function mudarEspacamento(){
+  const subNavbar = document.querySelector(".sub-navbar ul");
+  let spacing = document.querySelector("#element-spacing").value;
+
+  subNavbar.style.display = "flex"; 
+  subNavbar.style.justifyContent = spacing;
+}
