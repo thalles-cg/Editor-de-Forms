@@ -46,7 +46,49 @@ main .form-box {
   gap: 1em;
   flex: 1;
   list-style: none;
+
 }
+
+.sub-navbar ul li {
+  position: relative;
+  
+}
+
+.sub-navbar .remove-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  line-height: 14px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  z-index: 1;
+  padding: 0;
+}
+
+.sub-navbar .remove-btn:hover {
+  background-color: #e60000;
+}
+
+.sub-navbar ul li:hover {
+  background-color: #333333;
+  outline: 2px solid #4553f6;
+  box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.4);
+  padding: .2em;
+  padding-right: 20px;
+}
+.sub-navbar ul li:hover .remove-btn {
+  display: block;
+}
+
 .sub-navbar a {
   text-decoration: none;
 }
