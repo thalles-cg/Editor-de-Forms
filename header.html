@@ -64,7 +64,7 @@
         </div>
         <button class="addBtn">Adicionar formulário</button>
         <h2>Propriedades gerais</h2>
-        <div class="properties-content dropdown open">
+        <div class="properties-content dropdown">
           <h3 class="properties-category dropdown-toggle">Logo</h3>
           <div class="category-desc">
             <div class="option-line">
@@ -92,15 +92,9 @@
                 <span id="titleSizeValue">32px</span>
               </div>
             </div>
-            <div class="option-line dark">
-              <div class="property-option">
-                <label for="titleColor">Cor do título:</label>
-                <input type="color" id="titleColor" value="#5865f2" />
-              </div>
-            </div>
           </div>
         </div>
-        <div class="properties-content dropdown open">
+        <div class="properties-content dropdown">
           <h3 class="properties-category dropdown-toggle">Geral</h3>
           <div class="category-desc">
             <div class="option-line dark">
@@ -142,6 +136,17 @@
                 <span id="elementsSizeValue">16px</span>
               </div>
             </div>
+          </div>         
+        </div>
+        <div class="properties-content dropdown ">
+          <h3 class="properties-category dropdown-toggle">Cores</h3>
+          <div class="category-desc">
+            <div class="option-line dark">
+              <div class="property-option">
+                <label for="titleColor">Cor da logo:</label>
+                <input type="color" id="titleColor" value="#5865f2" />
+              </div>
+            </div>
             <div class="option-line">
               <div class="property-option">
                 <label for="headerColor">Cor do cabeçalho:</label>
@@ -154,7 +159,13 @@
                 <input type="color" id="elementsColor" value="#5865f2" />
               </div>
             </div>
-          </div>         
+            <div class="option-line">
+              <div class="property-option">
+                <label for="bgElementsColor">Fundo dos elementos:</label>
+                <input type="color" id="bgElementsColor" value="#5865f2" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

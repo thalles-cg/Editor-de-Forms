@@ -9,6 +9,7 @@ document.querySelector("#elementsFontSize").addEventListener("input", mudarFonte
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
 document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
 document.querySelector("#choose-font").addEventListener("change", mudarFonte)
+document.querySelector("#bgElementsColor").addEventListener("input", mudarBgElementos);
 
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   toggle.addEventListener('click', () => {
@@ -144,4 +145,11 @@ function mudarFonte() {
   const subNavbar = document.querySelector(".sub-navbar");
 
   subNavbar.style.fontFamily = document.querySelector("#choose-font").value;
+}
+
+function mudarBgElementos(){
+  subNavbar_li = document.querySelectorAll(".sub-navbar ul li");
+  subNavbar_li.forEach(element => {
+    element.style.backgroundColor = document.querySelector("#bgElementsColor").value;
+  });
 }
