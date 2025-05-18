@@ -8,6 +8,7 @@ document.querySelector("#elementsColor").addEventListener("input", mudarCorEleme
 document.querySelector("#elementsFontSize").addEventListener("input", mudarFonteElementos);
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
 document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
+document.querySelector("#choose-font").addEventListener("change", mudarFonte)
 
 document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
   toggle.addEventListener('click', () => {
@@ -137,4 +138,10 @@ function mudarEspacamento(){
 
   subNavbar.style.display = "flex"; 
   subNavbar.style.justifyContent = spacing;
+}
+
+function mudarFonte() {
+  const subNavbar = document.querySelector(".sub-navbar");
+
+  subNavbar.style.fontFamily = document.querySelector("#choose-font").value;
 }

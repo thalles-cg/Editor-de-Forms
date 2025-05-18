@@ -51,6 +51,8 @@ main .form-box {
 
 .sub-navbar ul li {
   position: relative;
+  background-color: #4553f6;
+  padding: .5em;
 }
 
 .sub-navbar .remove-btn {
