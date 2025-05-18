@@ -1,6 +1,10 @@
 section.form-box {
   padding: 0;
 }
+.form-box {
+  height: 600px;
+}
+
 main {
   display: flex;
   gap: 1.5em;
