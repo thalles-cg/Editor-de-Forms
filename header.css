@@ -26,10 +26,11 @@ main .form-box {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5em; 
+  vertical-align: middle;
+  gap: 0.1em; 
   height: 100%;
 }
-.logo.image {
+.logo .image {
   margin: 0;
   padding: 0;
   background-size: contain;
@@ -61,7 +62,7 @@ main .form-box {
   justify-content: space-between;
   gap: .3em;
   width: 100%;
-  align-items: centers;
+  align-items: center;
 }
 .input-elementText-input input{
   flex: 1;

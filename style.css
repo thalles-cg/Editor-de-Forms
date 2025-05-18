@@ -10,6 +10,7 @@ body {
   width: 100%;
   background-color: #1a1a1a;
   overflow-x: hidden;
+  margin-bottom: 4em;
 }
 header {
   display: flex;
@@ -52,13 +53,13 @@ main {
   display: flex;
   flex-direction: column;
 }
-.edit-field button {
+.addBtn {
   background-color: #5865f2;
   border: none;
   border-radius: 9px 9px;
   padding: 6px;
 }
-.edit-field button:hover {
+.addBtn:hover {
   cursor: pointer;
 }
 

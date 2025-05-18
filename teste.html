@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EdiT - Editor de Cabeçalho</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="header.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <h1 class="logo">EdiT</h1>
+        <ul>
+          <li><a href="index.html">Forms</a></li>
+          <li><a href="header.html">Cabeçalho</a></li>
+          <li><a href="#">Menu</a></li>
+          <li><a href="#">Galeria</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="edit-field">
+        <div class="properties">
+          <h2>Elementos do Cabeçalho</h2>
+          <div class="specific-properties">
+            <div class="option-line">
+              <button id="addLogo" class="addElement">+ Logo</button>
+              <button id="addText" class="addElement">+ Texto</button>
+              <button id="addImage" class="addElement">+ Imagem</button>
+            </div>
+          </div>
+
+          <h3 class="properties-category">Propriedades</h3>
+          <div class="category-desc" id="elementProperties">
+            <div class="option-line dark">
+              <div class="property-option text">
+                <label for="headerText">Texto:</label>
+                <input type="text" id="headerText" maxlength="30" />
+              </div>
+            </div>
+            <div class="option-line">
+              <div class="property-option range">
+                <label for="elemWidth">Largura:</label>
+                <input
+                  type="range"
+                  id="elemWidth"
+                  min="50"
+                  max="500"
+                  value="200"
+                />
+                <span id="widthValue">200px</span>
+              </div>
+            </div>
+            <div class="option-line dark">
+              <div class="property-option range">
+                <label for="elemHeight">Altura:</label>
+                <input
+                  type="range"
+                  id="elemHeight"
+                  min="20"
+                  max="200"
+                  value="50"
+                />
+                <span id="heightValue">50px</span>
+              </div>
+            </div>
+            <div class="option-line">
+              <div class="property-option">
+                <label for="elemBgColor">Cor de fundo:</label>
+                <input type="color" id="elemBgColor" value="#5865f2" />
+              </div>
+            </div>
+            <div class="option-line dark">
+              <div class="property-option">
+                <label for="elemTextColor">Cor do texto:</label>
+                <input type="color" id="elemTextColor" value="#FFFFFF" />
+              </div>
+            </div>
+            <div class="option-line">
+              <div class="property-option range">
+                <label for="elemFontSize">Tamanho do texto:</label>
+                <input
+                  type="range"
+                  id="elemFontSize"
+                  min="8"
+                  max="72"
+                  value="16"
+                />
+                <span id="fontSizeValue">16px</span>
+              </div>
+            </div>
+            <div
+              class="option-line dark"
+              id="imageUrlGroup"
+              style="display: none"
+            >
+              <div class="property-option text">
+                <label for="elemImageUrl">URL da Imagem:</label>
+                <input
+                  type="text"
+                  id="elemImageUrl"
+                  placeholder="Cole a URL da imagem"
+                />
+              </div>
+            </div>
+            <div class="option-line">
+              <button id="savePropertiesBtn" class="addForm">Aplicar</button>
+              <button id="removeElementBtn" class="addForm danger">
+                Remover
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-box">
+        <div id="headerPreview" class="header-preview">
+          <!-- Cabeçalho será renderizado aqui -->
+        </div>
+      </section>
+
+      <section class="general-properties">
+        <h2>Propriedades do Cabeçalho</h2>
+        <div class="properties-content">
+          <div class="option-line dark">
+            <div class="property-option range">
+              <label for="headerHeight">Altura do Cabeçalho:</label>
+              <input
+                type="range"
+                id="headerHeight"
+                min="50"
+                max="300"
+                value="100"
+              />
+              <span id="headerHeightValue">100px</span>
+            </div>
+          </div>
+          <div class="option-line">
+            <div class="property-option">
+              <label for="headerBgColor">Cor de fundo:</label>
+              <input type="color" id="headerBgColor" value="#5865f2" />
+            </div>
+          </div>
+          <div class="option-line dark">
+            <div class="property-option text">
+              <label for="headerPadding">Espaçamento interno:</label>
+              <input
+                type="range"
+                id="headerPadding"
+                min="0"
+                max="50"
+                value="10"
+              />
+              <span id="headerPaddingValue">10px</span>
+            </div>
+          </div>
+          <div class="option-line">
+            <button id="exportHtmlBtn" class="addForm">Exportar HTML</button>
+          </div>
+        </div>
+        <div id="htmlOutput" style="display: none; margin-top: 20px">
+          <textarea id="generatedHtml" rows="10" cols="50" readonly></textarea>
+          <button id="copyHtmlBtn" class="addForm">Copiar HTML</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="header.js"></script>
+  </body>
+</html>
