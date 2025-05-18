@@ -9,6 +9,13 @@ document.querySelector("#elementsFontSize").addEventListener("input", mudarFonte
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
 document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
 
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    const dropdown = toggle.closest('.dropdown');
+    dropdown.classList.toggle('open');
+    toggle.classList.toggle('active');
+  });
+});
 
 function verificarElemento(){
   const container = document.querySelector(".option-line.first");

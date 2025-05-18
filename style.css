@@ -229,6 +229,10 @@ input {
   background-color: #e60000;
 }
 
+.general-properties {
+  min-width: 300px;
+}
+
 .general-properties .property-option {
   display: flex;
   justify-content: space-between;
