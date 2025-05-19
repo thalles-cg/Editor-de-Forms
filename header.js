@@ -11,14 +11,6 @@ document.querySelector("#element-spacing").addEventListener("change", mudarEspac
 document.querySelector("#choose-font").addEventListener("change", mudarFonte)
 document.querySelector("#bgElementsColor").addEventListener("input", mudarBgElementos);
 
-document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-  toggle.addEventListener('click', () => {
-    const dropdown = toggle.closest('.dropdown');
-    dropdown.classList.toggle('open');
-    toggle.classList.toggle('active');
-  });
-});
-
 function verificarElemento(){
   const container = document.querySelector(".option-line.first");
   const input = document.querySelector("#elementText");

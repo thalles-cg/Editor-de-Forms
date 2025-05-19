@@ -243,3 +243,40 @@ input {
 .general-properties input[type="color"] {
   margin-left: auto;
 }
+
+.dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+}
+
+.dropdown-toggle::after {
+  content: "▼";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.active::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  flex-direction: column;
+  margin-top: 0.5em;
+}
+
+.dropdown-content.active {
+  display: flex;
+}
+
+.dropdown.open .category-desc {
+  display: block;
+}
+
+.category-desc {
+  display: none;
+}
