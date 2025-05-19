@@ -1,0 +1,51 @@
+.card-content {
+    max-width: 85%;
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    position: relative;
+}
+
+.card:hover::before {
+    content: "";
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    top: 0;
+    height: 30px;
+    width: 100%;
+}
+
+.card-controls {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    display: none;
+    gap: 5px;
+    z-index: 1;
+}
+
+.card:hover .card-controls {
+    display: flex;
+}
+
+.control-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}

@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link rel="stylesheet" href="gallery.css">
   </head>
   <body>
     <header>
@@ -24,12 +25,12 @@
     </header>
     <main>
       <section class="edit-field">
-        <button class="addBtn">Adicionar formulário</button>
+        <button class="addBtn">Adicionar card</button>
 
         <div class="properties">
           <h2>Propriedades</h2>
-          <div class="specific-properties">
-            <h3 class="properties-category">Label</h3>
+          <div class="specific-properties dropdown open">
+            <h3 class="properties-category dropdown-toggle">Label</h3>
             <div class="category-desc">
               <div class="option-line with-color">
                 <div class="property-option checkbox">
@@ -183,7 +184,7 @@
         </div>
       </section>
     </main>
-    <script src="script.js"></script>
+    <script src="gallery.js"></script>
     <script src="dropdown.js"></script>
   </body>
 </html>
