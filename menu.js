@@ -1,9 +1,7 @@
 document.querySelector(".addBtn").addEventListener("click", adicionarElemento)
 document.querySelector("#elementText").addEventListener("input", verificarElemento)
-document.querySelector("#titleText").addEventListener("input", mudarTitulo);
-document.querySelector("#titleFontSize").addEventListener("input", mudarTamanhoLogo);
-document.querySelector("#titleColor").addEventListener("input", mudarCorTitulo);
-document.querySelector("#headerColor").addEventListener("input", mudarCorHeader);
+document.querySelector("#imageSize").addEventListener("input", mudarTamanhoLogo);
+document.querySelector("#menuColor").addEventListener("input", mudarCorMenu);
 document.querySelector("#elementsColor").addEventListener("input", mudarCorElementos);
 document.querySelector("#elementsFontSize").addEventListener("input", mudarFonteElementos);
 document.querySelector("#logoImage").addEventListener("change", adicionarImagem)
@@ -36,14 +34,13 @@ function adicionarElemento(){
   let newElement = document.querySelector("#elementText");
     
   if (verificarElemento()) {
-    let navbar_ul = document.querySelector(".sub-navbar ul");
+    let menu_list = document.querySelector(".menu-list");
     let li = document.createElement("li");
     let a = document.createElement("a");
     a.setAttribute("href", "#")
     a.textContent = newElement.value;
 
     li.style.backgroundColor = document.querySelector("#bgElementsColor").value;
-
 
     let removeBtn = document.createElement("button");
     removeBtn.classList.add("remove-btn");
@@ -56,40 +53,33 @@ function adicionarElemento(){
 
     li.appendChild(a);
     li.appendChild(removeBtn)
-    navbar_ul.appendChild(li);
+    menu_list.appendChild(li);
     newElement.value = "";
   } 
 }
 
-function adicionarImagem(){
-  let inputImage = this;
-  let image = inputImage.files[0];
+  function adicionarImagem(){
+    let inputImage = this;
+    let image = inputImage.files[0];
 
-  const leitor = new FileReader();
-  
-  leitor.onload = function(e) {
-    const imageElement = document.querySelector(".image");
+    const leitor = new FileReader();
     
-    imageElement.style.backgroundImage = `url(${e.target.result})`;
-    imageElement.style.display = "block";
-    
-    let tamanho = document.querySelector("#titleFontSize").value + "px"
-    imageElement.style.width = tamanho;
-    imageElement.style.height = tamanho;
-  };  
-  leitor.readAsDataURL(image);
-}
+    leitor.onload = function(e) {
+      const imageElement = document.querySelector(".logo .image");
+      
+      imageElement.style.backgroundImage = `url(${e.target.result})`;
+      imageElement.style.display = "block";
+      
+      let tamanho = document.querySelector("#imageSize").value + "px"
+      imageElement.style.width = tamanho;
+      imageElement.style.height = tamanho;
+    };  
+    leitor.readAsDataURL(image);
+  }
 
-function mudarTitulo() {
-  let title = document.querySelector("#title");
-  let titleText = document.querySelector("#titleText");
-  title.textContent = titleText.value;
-}
+
 function mudarTamanhoLogo(){
-  let title = document.querySelector("#title");
-  let tamanho = document.querySelector("#titleFontSize").value + "px"
-  title.style.fontSize = tamanho;
-
+  let tamanho = document.querySelector("#imageSize").value + "px"
   const logoImage = document.querySelector(".logo .image");
 
   if (logoImage != 'none'){
@@ -97,30 +87,24 @@ function mudarTamanhoLogo(){
     logoImage.style.height = tamanho;
   }
 
-  let titleSizeValue = document.querySelector("#titleSizeValue");
-  titleSizeValue.textContent = document.querySelector("#titleFontSize").value + "px"
+  let imageSizeValue = document.querySelector("#imageSizeValue");
+  imageSizeValue.textContent = document.querySelector("#imageSize").value + "px"
 }
 
-function mudarCorTitulo() {
-  let title = document.querySelector("#title");
-  let titleColorAtual = document.querySelector("#titleColor").value;
-  title.style.color = titleColorAtual;
-}
-
-function mudarCorHeader() {
-  let header = document.querySelector(".sub-header");
-  header.style.backgroundColor = document.querySelector("#headerColor").value;
+function mudarCorMenu() {
+  let menu = document.querySelector(".menu");
+  menu.style.backgroundColor = document.querySelector("#menuColor").value;
 }
 
 function mudarCorElementos() {
-  let elements = document.querySelectorAll(".sub-navbar ul li a");
+  let elements = document.querySelectorAll(".menu-list li a");
   for (let i = 0 ; i < elements.length ; i++){
     elements[i].style.color = document.querySelector("#elementsColor").value;
   }
 }
 
 function mudarFonteElementos() {
-  let elements = document.querySelectorAll(".sub-navbar ul li a");
+  let elements = document.querySelectorAll(".menu-list li a");
   for (let i = 0 ; i < elements.length ; i++){
     elements[i].style.fontSize = document.querySelector("#elementsFontSize").value + "px";
   }
@@ -129,7 +113,7 @@ function mudarFonteElementos() {
 }
 
 function mudarEspacamento(){
-  const subNavbar = document.querySelector(".sub-navbar ul");
+  const subNavbar = document.querySelector(".menu-list");
   let spacing = document.querySelector("#element-spacing").value;
 
   subNavbar.style.display = "flex"; 
@@ -137,13 +121,13 @@ function mudarEspacamento(){
 }
 
 function mudarFonte() {
-  const subNavbar = document.querySelector(".sub-navbar");
+  const menu = document.querySelector(".menu");
 
-  subNavbar.style.fontFamily = document.querySelector("#choose-font").value;
+  menu.style.fontFamily = document.querySelector("#choose-font").value;
 }
 
 function mudarBgElementos(){
-  subNavbar_li = document.querySelectorAll(".sub-navbar ul li");
+  subNavbar_li = document.querySelectorAll(".menu-nav ul li");
   subNavbar_li.forEach(element => {
     element.style.backgroundColor = document.querySelector("#bgElementsColor").value;
   });

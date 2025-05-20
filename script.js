@@ -24,9 +24,9 @@ function adicionarForm() {
 
   removeBtn.addEventListener("click", function () {
     if (elementoSelecionado === novaDiv) {
-      const menu = document.querySelector(".specific-properties");
-      menu.classList.remove("active");
-      elementoSelecionado = null;
+        const menu = document.querySelector(".specific-properties");
+        menu.classList.remove("active");
+        elementoSelecionado = null;
     }
     novaDiv.remove();
   });

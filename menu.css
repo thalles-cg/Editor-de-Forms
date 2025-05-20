@@ -1,0 +1,68 @@
+
+.menu {
+    width: 100%;
+    min-height: 45px; 
+    background-color: #4a53b6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em 0;
+}
+.menu-nav {
+    display: flex;
+    width: 85%;
+}
+
+.menu-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 1em;
+    flex: 1;
+}
+.menu-list a {
+    text-decoration: none;  
+}
+.menu-nav .logo {
+    margin-right: 1em;
+}
+
+.menu-nav ul li {
+  position: relative;
+  background-color: #4553f6;
+  padding: .5em;
+}
+
+.menu-nav .remove-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  line-height: 14px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  z-index: 1;
+  padding: 0;
+}
+
+.menu-nav .remove-btn:hover {
+  background-color: #e60000;
+}
+
+.menu-nav ul li:hover {
+  background-color: #333333;
+  outline: 2px solid #4553f6;
+  box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.4);
+  padding-right: 20px;
+}
+.menu-nav ul li:hover .remove-btn {
+  display: block;
+}

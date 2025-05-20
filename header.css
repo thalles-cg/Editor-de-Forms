@@ -16,6 +16,8 @@ main .form-box {
 
 .sub-header {
   width: 100%;
+  min-height: 65px;
+  margin-bottom: 0;
 }
 .sub-navbar {
   display: flex;
@@ -148,4 +150,8 @@ input[type="file"]{
 
 .properties-category {
   cursor: pointer;
+}
+
+.form-box {
+  gap: 0;
 }
