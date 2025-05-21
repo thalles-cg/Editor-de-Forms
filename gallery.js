@@ -1,6 +1,6 @@
 document.querySelector(".addBtn").addEventListener("click", adicionarCard);
 document.querySelector("#cardWidth").addEventListener("input", mudarLaguraCards);
-document.querySelector("#cardHeight").addEventListener("input", mudarLaguraCards);
+document.querySelector("#cardHeight").addEventListener("input", mudarAlturaCards);
 
 
 
@@ -62,4 +62,16 @@ function mudarLaguraCards(e){
     });
 
     document.querySelector("#widthValue").textContent = widthValue;
+}
+
+function mudarAlturaCards(e){
+    heightValue = e.target.value + "px";
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.height = heightValue;
+    });
+
+    document.querySelector("#heightValue").textContent = heightValue;
 }
