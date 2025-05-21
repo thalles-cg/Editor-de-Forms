@@ -1,7 +1,7 @@
 document.querySelector(".addBtn").addEventListener("click", adicionarCard);
 document.querySelector("#cardWidth").addEventListener("input", mudarLaguraCards);
 document.querySelector("#cardHeight").addEventListener("input", mudarAlturaCards);
-
+document.querySelector("#addImage").addEventListener("change", adicionarEsconderImagem)
 
 
 function adicionarCard(){
@@ -42,13 +42,25 @@ function adicionarCard(){
 
     card.appendChild(controls)
     form_content.appendChild(card);
+
+    let img = document.createElement("div");
+    img.classList.add("card-picture");
+    card.appendChild(img);
+
+    let texts = document.createElement("div");
+    texts.classList.add("texts");
+    card.appendChild(texts);    
 }
 let elementoSelecionado = null;
 
 function abrirPropriedades(card){
-    menu = document.querySelector(".specific-properties");
+    let menus = document.querySelectorAll(".specific-properties");
+    
+    menus.forEach(menu => {
+        menu.classList.add("active")
+        
+    });
     elementoSelecionado = card;
-    menu.classList.add("active")
 
 }
 
@@ -74,4 +86,14 @@ function mudarAlturaCards(e){
     });
 
     document.querySelector("#heightValue").textContent = heightValue;
+}
+
+function adicionarEsconderImagem(){
+    let imagem = elementoSelecionado.querySelector(".card-picture");
+
+    if (imagem.style.display == "none"){
+        imagem.style.display = "block"
+    } else {
+        imagem.style.display = "none";
+    }
 }
