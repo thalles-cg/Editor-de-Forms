@@ -73,6 +73,7 @@ function atualizarPropriedades(){
     } else {
         document.querySelector("#showImage").checked = true;
     }
+    document.querySelector("#addImage").value = null;
 }
 
 function mudarLaguraCards(e){
@@ -116,14 +117,9 @@ function adicionarImagem(){
   const leitor = new FileReader();
   
   leitor.onload = function(e) {
-    const imageElement = document.querySelector(".image");
+    const imageElement = elementoSelecionado.querySelector(".card-picture");
     
     imageElement.style.backgroundImage = `url(${e.target.result})`;
-    imageElement.style.display = "block";
-    
-    let tamanho = document.querySelector("#titleFontSize").value + "px"
-    imageElement.style.width = tamanho;
-    imageElement.style.height = tamanho;
   };  
   leitor.readAsDataURL(image);
 }
