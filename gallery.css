@@ -53,10 +53,14 @@
 }
 
 .card-picture {
-    background: url(moises-dimas-resting-knight.gif);
     width: 100%;
     min-height: 60%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.option-line input[type="file"]{
+    color: white;
+    width: 99%;
 }

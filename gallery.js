@@ -25,8 +25,11 @@ function adicionarCard(){
     removeBtn.innerHTML = '<span class="material-symbols-outlined">close</span>';
     removeBtn.addEventListener('click', () => {
         if (elementoSelecionado === card){
-            const menu = document.querySelector(".specific-properties");
-            menu.classList.remove("active");
+            const menus = document.querySelectorAll(".specific-properties");
+
+            menus.forEach(menu => {
+                menu.classList.remove("active");
+            });
             elementoSelecionado = null;
         }
         card.remove()
@@ -73,7 +76,10 @@ function atualizarPropriedades(){
     } else {
         document.querySelector("#showImage").checked = true;
     }
-    document.querySelector("#addImage").value = null;
+
+    if (window.getComputedStyle(image).backgroundImage == 'none'){
+        document.querySelector("#addImage").value = null;
+    } 
 }
 
 function mudarLaguraCards(e){
@@ -118,7 +124,6 @@ function adicionarImagem(){
   
   leitor.onload = function(e) {
     const imageElement = elementoSelecionado.querySelector(".card-picture");
-    
     imageElement.style.backgroundImage = `url(${e.target.result})`;
   };  
   leitor.readAsDataURL(image);
