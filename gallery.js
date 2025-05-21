@@ -1,8 +1,8 @@
 document.querySelector(".addBtn").addEventListener("click", adicionarCard);
 document.querySelector("#cardWidth").addEventListener("input", mudarLaguraCards);
 document.querySelector("#cardHeight").addEventListener("input", mudarAlturaCards);
-document.querySelector("#addImage").addEventListener("change", adicionarEsconderImagem)
-
+document.querySelector("#showImage").addEventListener("change", mostrarEsconderImagem)
+document.querySelector("#addImage").addEventListener("change", adicionarImagem)
 
 function adicionarCard(){
     const form_content = document.querySelector(".card-content");
@@ -62,6 +62,17 @@ function abrirPropriedades(card){
     });
     elementoSelecionado = card;
 
+    atualizarPropriedades();
+}
+
+function atualizarPropriedades(){
+
+    let image = elementoSelecionado.querySelector(".card-picture");
+    if (image.style.display == "none"){
+        document.querySelector("#showImage").checked = false;
+    } else {
+        document.querySelector("#showImage").checked = true;
+    }
 }
 
 function mudarLaguraCards(e){
@@ -88,7 +99,7 @@ function mudarAlturaCards(e){
     document.querySelector("#heightValue").textContent = heightValue;
 }
 
-function adicionarEsconderImagem(){
+function mostrarEsconderImagem(){
     let imagem = elementoSelecionado.querySelector(".card-picture");
 
     if (imagem.style.display == "none"){
@@ -96,4 +107,23 @@ function adicionarEsconderImagem(){
     } else {
         imagem.style.display = "none";
     }
+}
+
+function adicionarImagem(){
+  let inputImage = this;
+  let image = inputImage.files[0];
+
+  const leitor = new FileReader();
+  
+  leitor.onload = function(e) {
+    const imageElement = document.querySelector(".image");
+    
+    imageElement.style.backgroundImage = `url(${e.target.result})`;
+    imageElement.style.display = "block";
+    
+    let tamanho = document.querySelector("#titleFontSize").value + "px"
+    imageElement.style.width = tamanho;
+    imageElement.style.height = tamanho;
+  };  
+  leitor.readAsDataURL(image);
 }

@@ -8,6 +8,7 @@
 
 .card {
     position: relative;
+    padding: .5em;
 }
 
 .card:hover::before {
@@ -15,6 +16,7 @@
     position: absolute;
     background-color: rgba(0, 0, 0, .5);
     top: 0;
+    left: 0;
     height: 30px;
     width: 100%;
 }
@@ -48,4 +50,13 @@
 
 .control-btn:hover {
     background: rgba(0, 0, 0, 0.8);
+}
+
+.card-picture {
+    background: url(moises-dimas-resting-knight.gif);
+    width: 100%;
+    min-height: 60%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
