@@ -52,6 +52,15 @@ function adicionarCard(){
 
     let texts = document.createElement("div");
     texts.classList.add("texts");
+
+    let title = document.createElement("div");
+    title.classList.add("card-title");
+    texts.appendChild(title);
+
+    let desc = document.createElement("div");
+    desc.classList.add("card-desc");
+    texts.appendChild(desc);
+    
     card.appendChild(texts);    
 }
 let elementoSelecionado = null;
