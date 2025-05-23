@@ -5,6 +5,10 @@ document.querySelector("#showImage").addEventListener("change", mostrarEsconderI
 document.querySelector("#addImage").addEventListener("change", adicionarImagem);
 document.querySelector("#addTitle").addEventListener("input", adiconarTitulo);
 document.querySelector("#addText").addEventListener("input", adicionarDescricao);
+document.querySelector("#bgColor").addEventListener("input", mudarCorBg)
+document.querySelector("#cardTitleColor").addEventListener("input", mudarCorTituloCard)
+document.querySelector("#cardDescColor").addEventListener("input", mudarCorDescCard)
+document.querySelector("#bgCardColor").addEventListener("input", mudarCorBgCard)
 
 function adicionarCard(){
     const form_content = document.querySelector(".card-content");
@@ -13,7 +17,7 @@ function adicionarCard(){
     card.classList.add("card");
     card.style.width = document.querySelector("#widthValue").textContent;
     card.style.height = document.querySelector("#heightValue").textContent;
-    card.style.backgroundColor = "#5865f2";
+    card.style.backgroundColor = document.querySelector("#bgCardColor").value;
     
     const editBtn = document.createElement('button');
     editBtn.className = 'control-btn';
@@ -60,7 +64,7 @@ function adicionarCard(){
 
     let pTitle = document.createElement("p");
     pTitle.textContent = "Título";
-    pTitle.style.fontSize = "1.4em"
+    pTitle.style.color = document.querySelector("#cardTitleColor").value;
     card_title.appendChild(pTitle);
 
     card_texts.appendChild(card_title);
@@ -70,6 +74,8 @@ function adicionarCard(){
 
     let pDesc = document.createElement("p");
     pDesc.textContent = "Descrição";
+    pDesc.style.color = document.querySelector("#cardDescColor").value;
+
     desc.appendChild(pDesc);
 
     card_texts.appendChild(desc);
@@ -152,11 +158,40 @@ function adicionarImagem(){
 }
 
 function adiconarTitulo(){
-    let card_title = elementoSelecionado.querySelector(".card-title");
+    let card_title = elementoSelecionado.querySelector(".card-title p");
     card_title.textContent = document.querySelector("#addTitle").value;
 }
 
 function adicionarDescricao(){
-    let card_desc = elementoSelecionado.querySelector(".card-desc");
+    let card_desc = elementoSelecionado.querySelector(".card-desc p");
     card_desc.textContent = document.querySelector("#addText").value;
+}
+
+function mudarCorBg() {
+    let editBg = document.querySelector(".form-box");
+    editBg.style.backgroundColor = document.querySelector("#bgColor").value;
+}
+
+function mudarCorTituloCard() {
+    let cards_title = document.querySelectorAll(".card-title p");
+
+    cards_title.forEach(card_title => {
+        card_title.style.color = document.querySelector("#cardTitleColor").value;
+    });
+}
+
+function mudarCorDescCard() {
+    let cards_desc = document.querySelectorAll(".card-desc p");
+
+    cards_desc.forEach(card_desc => {
+        card_desc.style.color = document.querySelector("#cardDescColor").value;
+    });    
+}
+
+function mudarCorBgCard() {
+    let bgCards = document.querySelectorAll(".card");
+
+    bgCards.forEach(bgCard => {
+        bgCard.style.backgroundColor = document.querySelector("#bgCardColor").value;
+    });
 }
