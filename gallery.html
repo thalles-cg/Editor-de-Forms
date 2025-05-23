@@ -47,43 +47,18 @@
             </div>
           </div>
           <div class="specific-properties dropdown open">
-            <h3 class="properties-category dropdown-toggle">Título</h3>
+            <h3 class="properties-category dropdown-toggle">Textos</h3>
             <div class="category-desc">
-              <div class="option-line with-color">
-                <div class="property-option">
-                  <label for="addColor">Cor</label>
-                  <input type="color" id="addColor" value="#FFFFFF" />
-                </div>
-              </div>
               <div class="option-line dark">
                 <div class="property-option text">
-                  <label for="addText">Texto:</label>
-                  <input type="text" id="addText" maxlength="12" />
+                  <label for="addTitle">Título:</label>
+                  <input type="text" id="addTitle" maxlength="12"/>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="specific-properties dropdown open">
-            <h3 class="properties-category dropdown-toggle">Input</h3>
-            <div class="category-desc">
-              <div class="option-line">
-                <div class="property-option types">
-                  <label for="choose-type">Tipo</label>
-                  <select name="choose-type" id="choose-type">
-                    <option value="">- Selecione -</option>
-                    <option value="text">text</option>
-                    <option value="email">email</option>
-                    <option value="password">password</option>
-                    <option value="number">number</option>
-                    <option value="date">date</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="option-line dark">
-                <div class="property-option text">
-                  <label for="addPlaceholder">Placeholder:</label>
-                  <input type="text" id="addPlaceholder" maxlength="15" />
+              <div class="option-line ">
+                <div class="property-option textarea">
+                  <label for="addText">Descrição:</label>
+                  <textarea id="addText"></textarea>
                 </div>
               </div>
             </div>
@@ -139,7 +114,7 @@
                 <input
                   type="range"
                   id="cardWidth"
-                  min="100"
+                  min="150"
                   max="400"
                   value="200"
                 />
@@ -152,7 +127,7 @@
                 <input
                   type="range"
                   id="cardHeight"
-                  min="150"
+                  min="180"
                   max="300"
                   value="250"
                 />

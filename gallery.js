@@ -2,7 +2,9 @@ document.querySelector(".addBtn").addEventListener("click", adicionarCard);
 document.querySelector("#cardWidth").addEventListener("input", mudarLaguraCards);
 document.querySelector("#cardHeight").addEventListener("input", mudarAlturaCards);
 document.querySelector("#showImage").addEventListener("change", mostrarEsconderImagem)
-document.querySelector("#addImage").addEventListener("change", adicionarImagem)
+document.querySelector("#addImage").addEventListener("change", adicionarImagem);
+document.querySelector("#addTitle").addEventListener("input", adiconarTitulo);
+document.querySelector("#addText").addEventListener("input", adicionarDescricao);
 
 function adicionarCard(){
     const form_content = document.querySelector(".card-content");
@@ -50,18 +52,29 @@ function adicionarCard(){
     img.classList.add("card-picture");
     card.appendChild(img);
 
-    let texts = document.createElement("div");
-    texts.classList.add("texts");
+    let card_texts = document.createElement("div");
+    card_texts.classList.add("card-texts");
 
-    let title = document.createElement("div");
-    title.classList.add("card-title");
-    texts.appendChild(title);
+    let card_title = document.createElement("div");
+    card_title.classList.add("card-title");
+
+    let pTitle = document.createElement("p");
+    pTitle.textContent = "Título";
+    pTitle.style.fontSize = "1.4em"
+    card_title.appendChild(pTitle);
+
+    card_texts.appendChild(card_title);
 
     let desc = document.createElement("div");
     desc.classList.add("card-desc");
-    texts.appendChild(desc);
+
+    let pDesc = document.createElement("p");
+    pDesc.textContent = "Descrição";
+    desc.appendChild(pDesc);
+
+    card_texts.appendChild(desc);
     
-    card.appendChild(texts);    
+    card.appendChild(card_texts);    
 }
 let elementoSelecionado = null;
 
@@ -136,4 +149,14 @@ function adicionarImagem(){
     imageElement.style.backgroundImage = `url(${e.target.result})`;
   };  
   leitor.readAsDataURL(image);
+}
+
+function adiconarTitulo(){
+    let card_title = elementoSelecionado.querySelector(".card-title");
+    card_title.textContent = document.querySelector("#addTitle").value;
+}
+
+function adicionarDescricao(){
+    let card_desc = elementoSelecionado.querySelector(".card-desc");
+    card_desc.textContent = document.querySelector("#addText").value;
 }
