@@ -9,6 +9,9 @@ document.querySelector("#bgColor").addEventListener("input", mudarCorBg)
 document.querySelector("#cardTitleColor").addEventListener("input", mudarCorTituloCard)
 document.querySelector("#cardDescColor").addEventListener("input", mudarCorDescCard)
 document.querySelector("#bgCardColor").addEventListener("input", mudarCorBgCard)
+document.querySelector("#choose-font-title").addEventListener("change", mudarFonteTitulo)
+document.querySelector("#choose-font-desc").addEventListener("change", mudarFonteDescricao)
+document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
 
 function adicionarCard(){
     const form_content = document.querySelector(".card-content");
@@ -18,7 +21,7 @@ function adicionarCard(){
     card.style.width = document.querySelector("#widthValue").textContent;
     card.style.height = document.querySelector("#heightValue").textContent;
     card.style.backgroundColor = document.querySelector("#bgCardColor").value;
-    
+
     const editBtn = document.createElement('button');
     editBtn.className = 'control-btn';
     editBtn.innerHTML = '<span class="material-symbols-outlined">edit</span>';
@@ -65,6 +68,8 @@ function adicionarCard(){
     let pTitle = document.createElement("p");
     pTitle.textContent = "Título";
     pTitle.style.color = document.querySelector("#cardTitleColor").value;
+    pTitle.style.fontFamily = document.querySelector("#choose-font-title").value;
+
     card_title.appendChild(pTitle);
 
     card_texts.appendChild(card_title);
@@ -75,6 +80,8 @@ function adicionarCard(){
     let pDesc = document.createElement("p");
     pDesc.textContent = "Descrição";
     pDesc.style.color = document.querySelector("#cardDescColor").value;
+    pDesc.style.fontFamily = document.querySelector("#choose-font-desc").value;
+
 
     desc.appendChild(pDesc);
 
@@ -194,4 +201,26 @@ function mudarCorBgCard() {
     bgCards.forEach(bgCard => {
         bgCard.style.backgroundColor = document.querySelector("#bgCardColor").value;
     });
+}
+
+function mudarFonteTitulo(){
+    let cardsTitle = document.querySelectorAll(".card-title p");
+
+    cardsTitle.forEach(cardTitle => {
+        cardTitle.style.fontFamily = document.querySelector("#choose-font-title").value;
+    });
+}
+
+function mudarFonteDescricao(){
+    let cardsDesc = document.querySelectorAll(".card-desc p");
+
+    cardsDesc.forEach(cardDesc => {
+        cardDesc.style.fontFamily = document.querySelector("#choose-font-title").value;
+    });
+}
+
+function mudarEspacamento() {
+    let container = document.querySelector(".card-content");
+    container.style.display = "flex";
+    container.style.justifyContent = document.querySelector("#element-spacing").value;
 }
