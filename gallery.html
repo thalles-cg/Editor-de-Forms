@@ -100,6 +100,19 @@
               </div>
             </div>
             <div class="option-line">
+              <div class="property-option range">
+                <label for="cardBorder">Borda:</label>
+                <input
+                  type="range"
+                  id="cardBorder"
+                  min="0"
+                  max="10"
+                  value="0"
+                />
+                <span id="borderValue">0px</span>
+              </div>
+            </div>
+            <div class="option-line dark">
               <div class="property-option">
                 <label for="choose-font-title">Fonte do título: </label>
                 <select name="choose-font-title" id="choose-font-title">
@@ -111,7 +124,7 @@
                 </select>
               </div>
             </div>
-            <div class="option-line dark">
+            <div class="option-line">
               <div class="property-option">
                 <label for="choose-font-desc">Fonte da descrição: </label>
                 <select name="choose-font-desc" id="choose-font-desc">
@@ -123,7 +136,7 @@
                 </select>
               </div>
             </div>
-            <div class="option-line">
+            <div class="option-line dark">
               <div class="property-option">
                 <label for="element-spacing">Espaçamento: </label>
                 <select name="element-spacing" id="element-spacing">
@@ -161,6 +174,12 @@
               </div>
             </div>
             <div class="option-line dark">
+              <div class="property-option">
+                <label for="cardBorderColor">Borda do card:</label>
+                <input type="color" id="cardBorderColor" value="black" />
+              </div>
+            </div>
+            <div class="option-line">
               <div class="property-option">
                 <label for="bgCardColor">Fundo do card:</label>
                 <input type="color" id="bgCardColor" value="#5865f2" />

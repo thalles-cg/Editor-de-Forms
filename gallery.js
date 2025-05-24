@@ -12,6 +12,10 @@ document.querySelector("#bgCardColor").addEventListener("input", mudarCorBgCard)
 document.querySelector("#choose-font-title").addEventListener("change", mudarFonteTitulo)
 document.querySelector("#choose-font-desc").addEventListener("change", mudarFonteDescricao)
 document.querySelector("#element-spacing").addEventListener("change", mudarEspacamento)
+document.querySelector("#cardBorder").addEventListener("input", mudarBordaCard)
+document.querySelector("#cardBorderColor").addEventListener("input", mudarCorBordaCard)
+
+
 
 function adicionarCard(){
     const form_content = document.querySelector(".card-content");
@@ -21,6 +25,8 @@ function adicionarCard(){
     card.style.width = document.querySelector("#widthValue").textContent;
     card.style.height = document.querySelector("#heightValue").textContent;
     card.style.backgroundColor = document.querySelector("#bgCardColor").value;
+    card.style.border = document.querySelector("#cardBorder").value;
+    card.style.borderColor = document.querySelector("#cardBorderColor").value;
 
     const editBtn = document.createElement('button');
     editBtn.className = 'control-btn';
@@ -223,4 +229,24 @@ function mudarEspacamento() {
     let container = document.querySelector(".card-content");
     container.style.display = "flex";
     container.style.justifyContent = document.querySelector("#element-spacing").value;
+}
+
+function mudarBordaCard(e) {
+    borderValue = e.target.value + "px";
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.border = "solid " + borderValue + " black";
+    });
+
+    document.querySelector("#borderValue").textContent = borderValue;
+}
+
+function mudarCorBordaCard() {
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.borderColor = document.querySelector("#cardBorderColor").value;
+    });
 }
