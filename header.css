@@ -155,3 +155,10 @@ input[type="file"]{
 .form-box {
   gap: 0;
 }
+
+.footer {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+}
+

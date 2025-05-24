@@ -228,7 +228,6 @@ function atualizarTamanhoTitulo(e) {
   }
 }
 function atualizarCorTitulo(e) {
-  console.log("Cor alterada para:", e.target.value);
   const titulo = document.querySelector(".form-box-title h2");
   if (titulo) {
     titulo.style.color = e.target.value;

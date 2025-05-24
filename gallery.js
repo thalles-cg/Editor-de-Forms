@@ -25,7 +25,9 @@ function adicionarCard(){
     card.style.width = document.querySelector("#widthValue").textContent;
     card.style.height = document.querySelector("#heightValue").textContent;
     card.style.backgroundColor = document.querySelector("#bgCardColor").value;
-    card.style.border = document.querySelector("#cardBorder").value;
+
+    let border = document.querySelector("#cardBorder").value + "px" + " solid";
+    card.style.border = border;
     card.style.borderColor = document.querySelector("#cardBorderColor").value;
 
     const editBtn = document.createElement('button');
