@@ -17,9 +17,9 @@ function verificarElemento(){
   const numChars = input.value.length;
   const errorMessage = document.querySelector(".error-message");
 
-  if (numChars === 0 || numChars > 8) {
+  if (numChars === 0 || numChars > 18) {
     input.classList.add("input-error");
-    errorMessage.textContent = "O elemento deve ter entre 1 e 8 caracteres";
+    errorMessage.textContent = "O elemento deve ter entre 1 e 18 caracteres";
     errorMessage.style.display = "block";
     container.style.paddingTop = "3em";
     return false;
@@ -37,6 +37,7 @@ function adicionarElemento(){
     
   if (verificarElemento()) {
     let navbar_ul = document.querySelector(".sub-navbar ul");
+    let image = document.querySelector(".image")
     let li = document.createElement("li");
     let a = document.createElement("a");
     a.setAttribute("href", "#")
