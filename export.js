@@ -31,7 +31,7 @@ function exportarHeader() {
   localStorage.setItem('headerSelecionado', clone.outerHTML);
 
   // Redirecionar para a visualização
-  window.location.href = 'preview.html';
+  window.location.href = '/preview.html';
 }
 
 function exportarMenu() {
@@ -43,7 +43,7 @@ function exportarMenu() {
   const clone = menu.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('menuSelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/preview.html';
 }
 
 function exportarFooter() {
@@ -55,7 +55,7 @@ function exportarFooter() {
   const clone = footer.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('footerSelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/preview.html';
 }
 
 // Função recursiva que aplica todos os estilos CSS computados como inline
