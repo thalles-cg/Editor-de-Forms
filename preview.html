@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/components/gallery/gallery.css">
+  <link rel="stylesheet" href="/components/header/header.css">
+  <link rel="stylesheet" href="/components/menu/menu.css">
+  <link rel="stylesheet" href="preview.css">
+  <title>Prévia do Formulário</title>
+</head>
+<body>
+  <main>
+    <div class="header-menu">
+      <div id="header-container"></div>
+      <div id="menu-container"></div>
+    </div>
+    <div id="footer-container"></div>
+  </main>
+  
+
+  <script>
+    const headerSalvo = localStorage.getItem('headerSelecionado');
+    const menuSalvo = localStorage.getItem('menuSelecionado');
+    const footerSalvo = localStorage.getItem('footerSelecionado');
+
+    document.getElementById('header-container').innerHTML = headerSalvo || '<p>Nada exportado.</p>';
+    document.getElementById('menu-container').innerHTML = menuSalvo || '<p>Nada exportado.</p>';
+    document.getElementById('footer-container').innerHTML = footerSalvo || '<p>Nada exportado.</p>';
+  </script>
+</body>
+</html>
