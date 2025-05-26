@@ -39,7 +39,11 @@ function exportarHeader() {
   localStorage.setItem('headerSelecionado', clone.outerHTML);
 
   // Redirecionar para a visualização
+  if (window.location.hostname.includes('github.io')) {
   window.location.href = '/Editor-de-Forms/preview.html';
+  } else {
+    window.location.href = './preview.html';
+  }
 }
 
 function exportarMenu() {
@@ -51,7 +55,12 @@ function exportarMenu() {
   const clone = menu.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('menuSelecionado', clone.outerHTML);
+
+  if (window.location.hostname.includes('github.io')) {
   window.location.href = '/Editor-de-Forms/preview.html';
+  } else {
+    window.location.href = './preview.html';
+  }
 }
 
 function exportarFooter() {
@@ -63,7 +72,12 @@ function exportarFooter() {
   const clone = footer.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('footerSelecionado', clone.outerHTML);
+
+  if (window.location.hostname.includes('github.io')) {
   window.location.href = '/Editor-de-Forms/preview.html';
+  } else {
+    window.location.href = './preview.html';
+  }
 }
 
 function exportarGallery() {
@@ -75,7 +89,12 @@ function exportarGallery() {
   const clone = gallery.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('gallerySelecionado', clone.outerHTML);
+
+  if (window.location.hostname.includes('github.io')) {
   window.location.href = '/Editor-de-Forms/preview.html';
+  } else {
+    window.location.href = './preview.html';
+  }
 }
 
 function exportarForm() {
@@ -87,7 +106,12 @@ function exportarForm() {
   const clone = forms.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('formsSelecionado', clone.outerHTML);
+
+  if (window.location.hostname.includes('github.io')) {
   window.location.href = '/Editor-de-Forms/preview.html';
+  } else {
+    window.location.href = './preview.html';
+  }
 }
 
 // Função recursiva que aplica todos os estilos CSS computados como inline
