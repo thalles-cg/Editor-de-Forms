@@ -23,17 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const galeriaSalva = localStorage.getItem("gallerySelecionado");
 
-if (galeriaSalva) {
-  const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
-  const container = document.createElement('div');
-  container.innerHTML = galeriaSalva;
+  if (galeriaSalva) {
+    const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
+    const container = document.createElement('div');
+    container.innerHTML = galeriaSalva;
 
-  const novaGaleria = container.firstElementChild;
+    const novaGaleria = container.firstElementChild;
 
-  if (galeria && galeria.parentNode && novaGaleria) {
-    galeria.parentNode.replaceChild(novaGaleria, galeria);
+    if (galeria && galeria.parentNode && novaGaleria) {
+      galeria.parentNode.replaceChild(novaGaleria, galeria);
+    }
   }
-}
 });
 
 function exportarHeader() {
