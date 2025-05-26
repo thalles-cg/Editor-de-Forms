@@ -23,15 +23,16 @@
     </div>
     <div id="footer-container"></div>
   </main>
-  
 
   <script>
+    // Carrega os dados do localStorage
     const headerSalvo = localStorage.getItem('headerSelecionado');
     const menuSalvo = localStorage.getItem('menuSelecionado');
     const gallerySalvo = localStorage.getItem('gallerySelecionado');
     const formsSalvo = localStorage.getItem('formsSelecionado');
     const footerSalvo = localStorage.getItem('footerSelecionado');
 
+    // Exibe na prévia
     document.getElementById('header-container').innerHTML = headerSalvo || '<p>Nada exportado.</p>';
     document.getElementById('menu-container').innerHTML = menuSalvo || '<p>Nada exportado.</p>';
     document.getElementById('gallery-container').innerHTML = gallerySalvo || '<p>Nada exportado.</p>';
@@ -49,6 +50,7 @@
     }
 
     async function downloadFullHTML() {
+      // Coletar todos os estilos CSS
       const cssFiles = [
         'style.css',
         './components/gallery/gallery.css',
@@ -62,19 +64,43 @@
         combinedCSS += await fetchCSS(file) + '\n';
       }
       
-      const htmlContent = document.documentElement.outerHTML;
+      // Criar cópia do DOM para exportação
+      const exportClone = document.cloneNode(true);
+      const exportBody = exportClone.body;
       
+      // Remover o botão de download
+      const btn = exportBody.querySelector('.btn');
+      if (btn) btn.remove();
+      
+      // Atualizar containers com conteúdo do localStorage
+      const containers = {
+        'header-container': localStorage.getItem('headerSelecionado'),
+        'menu-container': localStorage.getItem('menuSelecionado'),
+        'gallery-container': localStorage.getItem('gallerySelecionado'),
+        'forms-container': localStorage.getItem('formsSelecionado'),
+        'footer-container': localStorage.getItem('footerSelecionado')
+      };
+
+      for (const [id, content] of Object.entries(containers)) {
+        const element = exportBody.querySelector(`#${id}`);
+        if (element && content) {
+          element.innerHTML = content;
+        }
+      }
+
+      // Gerar o HTML final
       const fullHTML = `<!DOCTYPE html>
 <html lang="pt-br">
-head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página Exportada</title>
   <style>${combinedCSS}</style>
 </head>
-${document.body.innerHTML.replace('<button class="btn" onclick="downloadFullHTML()">Baixar HTML Completo</button>', '')}
+${exportBody.innerHTML}
 </html>`;
-            
+      
+      // Criar e disparar o download
       const blob = new Blob([fullHTML], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
