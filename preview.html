@@ -12,9 +12,13 @@
 </head>
 <body>
   <main>
-    <div class="header-menu">
-      <div id="header-container"></div>
-      <div id="menu-container"></div>
+    <div class="not-footer">
+      <div class="header-menu">
+        <div id="header-container"></div>
+        <div id="menu-container"></div>
+      </div>
+      <div id="gallery-container"></div>
+      <div id="forms-container"></div>
     </div>
     <div id="footer-container"></div>
   </main>
@@ -23,10 +27,14 @@
   <script>
     const headerSalvo = localStorage.getItem('headerSelecionado');
     const menuSalvo = localStorage.getItem('menuSelecionado');
+    const gallerySalvo = localStorage.getItem('gallerySelecionado');
+    const formsSalvo = localStorage.getItem('formsSelecionado');
     const footerSalvo = localStorage.getItem('footerSelecionado');
 
     document.getElementById('header-container').innerHTML = headerSalvo || '<p>Nada exportado.</p>';
     document.getElementById('menu-container').innerHTML = menuSalvo || '<p>Nada exportado.</p>';
+    document.getElementById('gallery-container').innerHTML = gallerySalvo || '<p>Nada exportado.</p>';
+    document.getElementById('forms-container').innerHTML = formsSalvo || '<p>Nada exportado.</p>';
     document.getElementById('footer-container').innerHTML = footerSalvo || '<p>Nada exportado.</p>';
   </script>
 </body>

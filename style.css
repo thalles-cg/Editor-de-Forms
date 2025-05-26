@@ -56,13 +56,22 @@ main {
   display: flex;
   flex-direction: column;
 }
+
 .addBtn {
+  margin-bottom: 1em;
+}
+.btn {
+  width: 100%;
+  margin-bottom: .4em;
+}
+
+.addBtn, .btn {
   background-color: #5865f2;
   border: none;
   border-radius: 9px 9px;
   padding: 6px;
 }
-.addBtn:hover {
+.addBtn:hover, .btn:hover {
   cursor: pointer;
 }
 

@@ -10,5 +10,31 @@ main {
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
+    margin-bottom: 0;
+}
+.not-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5em;
 }
 
+.card-content {
+    width: 100%;
+    margin: 0 auto; 
+}
+
+.card-controls {
+    display: none !important;
+}
+
+.card:hover {
+  box-shadow: none !important;
+}
+
+#forms-container{
+    margin: 0 auto;
+}
+
+#footer-container {
+    margin-top: 1em;
+}

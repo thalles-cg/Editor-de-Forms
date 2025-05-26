@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const exportHeaderBtn = document.querySelector("#exportHeaderBtn");
   const exportMenuBtn = document.querySelector("#exportMenuBtn");
   const exportFooterBtn = document.querySelector("#exportFooterBtn");
+  const exportGalleryBtn = document.querySelector("#exportGalleryBtn");
+  const exportFormBtn = document.querySelector("#exportFormBtn");
 
   if (exportHeaderBtn) {
     exportHeaderBtn.addEventListener("click", exportarHeader);
@@ -11,6 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (exportFooterBtn) {
     exportFooterBtn.addEventListener("click", exportarFooter);
+  }
+  if (exportGalleryBtn) {
+    exportGalleryBtn.addEventListener("click", exportarGallery);
+  }
+  if (exportFormBtn) {
+    exportFormBtn.addEventListener("click", exportarForm);
   }
 });
 
@@ -55,6 +63,30 @@ function exportarFooter() {
   const clone = footer.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('footerSelecionado', clone.outerHTML);
+  window.location.href = '/preview.html';
+}
+
+function exportarGallery() {
+  const gallery = document.querySelector('.card-content[data-form-id="gallery"]');
+  if (!gallery) {
+    alert('Gallery não encontrado.');
+    return;
+  }
+  const clone = gallery.cloneNode(true);
+  applyInlineStyles(clone);
+  localStorage.setItem('gallerySelecionado', clone.outerHTML);
+  window.location.href = '/preview.html';
+}
+
+function exportarForm() {
+  const forms = document.querySelector('.form-content[data-form-id="forms"]');
+  if (!forms) {
+    alert('Forms não encontrado.');
+    return;
+  }
+  const clone = forms.cloneNode(true);
+  applyInlineStyles(clone);
+  localStorage.setItem('formsSelecionado', clone.outerHTML);
   window.location.href = '/preview.html';
 }
 
