@@ -11,6 +11,7 @@
   <title>Prévia do Formulário</title>
 </head>
 <body>
+  <button class="btn" onclick="downloadFullHTML()">Baixar HTML Completo</button>
   <main>
     <div class="not-footer">
       <div class="header-menu">
@@ -36,6 +37,54 @@
     document.getElementById('gallery-container').innerHTML = gallerySalvo || '<p>Nada exportado.</p>';
     document.getElementById('forms-container').innerHTML = formsSalvo || '<p>Nada exportado.</p>';
     document.getElementById('footer-container').innerHTML = footerSalvo || '<p>Nada exportado.</p>';
+
+    async function fetchCSS(url) {
+      try {
+        const response = await fetch(url);
+        return await response.text();
+      } catch (e) {
+        console.error(`Erro ao carregar CSS: ${url}`, e);
+        return '';
+      }
+    }
+
+    async function downloadFullHTML() {
+      const cssFiles = [
+        'style.css',
+        './components/gallery/gallery.css',
+        './components/header/header.css',
+        './components/menu/menu.css',
+        'preview.css'
+      ];
+      
+      let combinedCSS = '';
+      for (const file of cssFiles) {
+        combinedCSS += await fetchCSS(file) + '\n';
+      }
+      
+      const htmlContent = document.documentElement.outerHTML;
+      
+      const fullHTML = `<!DOCTYPE html>
+<html lang="pt-br">
+head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Exportada</title>
+  <style>${combinedCSS}</style>
+</head>
+${document.body.innerHTML.replace('<button class="btn" onclick="downloadFullHTML()">Baixar HTML Completo</button>', '')}
+</html>`;
+            
+      const blob = new Blob([fullHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'pagina-exportada.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
   </script>
 </body>
 </html>
