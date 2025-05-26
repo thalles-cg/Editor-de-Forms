@@ -3,7 +3,7 @@ document.querySelector("#cardWidth").addEventListener("input", mudarLaguraCards)
 document.querySelector("#cardHeight").addEventListener("input", mudarAlturaCards);
 document.querySelector("#showImage").addEventListener("change", mostrarEsconderImagem)
 document.querySelector("#addImage").addEventListener("change", adicionarImagem);
-document.querySelector("#addTitle").addEventListener("input", adiconarTitulo);
+document.querySelector("#addTitle").addEventListener("input", adicionarTitulo);
 document.querySelector("#addText").addEventListener("input", adicionarDescricao);
 document.querySelector("#bgColor").addEventListener("input", mudarCorBg)
 document.querySelector("#cardTitleColor").addEventListener("input", mudarCorTituloCard)
@@ -172,7 +172,7 @@ function adicionarImagem(){
   leitor.readAsDataURL(image);
 }
 
-function adiconarTitulo(){
+function adicionarTitulo(){
     let card_title = elementoSelecionado.querySelector(".card-title p");
     card_title.textContent = document.querySelector("#addTitle").value;
 }
@@ -223,7 +223,7 @@ function mudarFonteDescricao(){
     let cardsDesc = document.querySelectorAll(".card-desc p");
 
     cardsDesc.forEach(cardDesc => {
-        cardDesc.style.fontFamily = document.querySelector("#choose-font-title").value;
+        cardDesc.style.fontFamily = document.querySelector("#choose-font-desc").value;
     });
 }
 

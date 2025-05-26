@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (exportFormBtn) {
     exportFormBtn.addEventListener("click", exportarForm);
   }
+
+  const galeriaSalva = localStorage.getItem("gallerySelecionado");
+  const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
+
+  if (galeriaSalva && galeria) {
+    galeria.innerHTML = galeriaSalva;
+  }
 });
 
 function exportarHeader() {
