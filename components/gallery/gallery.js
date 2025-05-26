@@ -114,15 +114,15 @@ function abrirPropriedades(card){
 function atualizarPropriedades(){
 
     let image = elementoSelecionado.querySelector(".card-picture");
-    if (image.style.display == "none"){
-        document.querySelector("#showImage").checked = false;
-    } else {
-        document.querySelector("#showImage").checked = true;
-    }
-
-    if (window.getComputedStyle(image).backgroundImage == 'none'){
-        document.querySelector("#addImage").value = null;
-    } 
+    document.querySelector("#showImage").checked = image.style.display !== "none";
+    
+    // Atualizar título
+    let title = elementoSelecionado.querySelector(".card-title p").textContent;
+    document.querySelector("#addTitle").value = title;
+    
+    // Atualizar descrição
+    let desc = elementoSelecionado.querySelector(".card-desc p").textContent;
+    document.querySelector("#addText").value = desc;
 }
 
 function mudarLaguraCards(e){
