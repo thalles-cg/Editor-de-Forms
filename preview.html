@@ -25,19 +25,17 @@
   </main>
 
   <script>
-    // Carrega os dados do localStorage
-    const headerSalvo = localStorage.getItem('headerSelecionado');
-    const menuSalvo = localStorage.getItem('menuSelecionado');
-    const gallerySalvo = localStorage.getItem('gallerySelecionado');
-    const formsSalvo = localStorage.getItem('formsSelecionado');
-    const footerSalvo = localStorage.getItem('footerSelecionado');
+    // Carrega e exibe os dados na prévia
+    function loadPreview() {
+      document.getElementById('header-container').innerHTML = localStorage.getItem('headerSelecionado') || '<p>Nada exportado.</p>';
+      document.getElementById('menu-container').innerHTML = localStorage.getItem('menuSelecionado') || '<p>Nada exportado.</p>';
+      document.getElementById('gallery-container').innerHTML = localStorage.getItem('gallerySelecionado') || '<p>Nada exportado.</p>';
+      document.getElementById('forms-container').innerHTML = localStorage.getItem('formsSelecionado') || '<p>Nada exportado.</p>';
+      document.getElementById('footer-container').innerHTML = localStorage.getItem('footerSelecionado') || '<p>Nada exportado.</p>';
+    }
 
-    // Exibe na prévia
-    document.getElementById('header-container').innerHTML = headerSalvo || '<p>Nada exportado.</p>';
-    document.getElementById('menu-container').innerHTML = menuSalvo || '<p>Nada exportado.</p>';
-    document.getElementById('gallery-container').innerHTML = gallerySalvo || '<p>Nada exportado.</p>';
-    document.getElementById('forms-container').innerHTML = formsSalvo || '<p>Nada exportado.</p>';
-    document.getElementById('footer-container').innerHTML = footerSalvo || '<p>Nada exportado.</p>';
+    // Carrega a prévia ao iniciar
+    loadPreview();
 
     async function fetchCSS(url) {
       try {
@@ -50,7 +48,7 @@
     }
 
     async function downloadFullHTML() {
-      // Coletar todos os estilos CSS
+      // 1. Primeiro carregamos todos os CSS
       const cssFiles = [
         'style.css',
         './components/gallery/gallery.css',
@@ -64,15 +62,24 @@
         combinedCSS += await fetchCSS(file) + '\n';
       }
       
-      // Criar cópia do DOM para exportação
-      const exportClone = document.cloneNode(true);
-      const exportBody = exportClone.body;
+      // 2. Criamos um novo documento limpo
+      const parser = new DOMParser();
+      const htmlDoc = parser.parseFromString(`
+        <!DOCTYPE html>
+        <html lang="pt-br">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Página Exportada</title>
+          <style>${combinedCSS}</style>
+        </head>
+        <body>
+          ${document.querySelector('main').outerHTML}
+        </body>
+        </html>
+      `, 'text/html');
       
-      // Remover o botão de download
-      const btn = exportBody.querySelector('.btn');
-      if (btn) btn.remove();
-      
-      // Atualizar containers com conteúdo do localStorage
+      // 3. Atualizamos os containers com os dados do localStorage
       const containers = {
         'header-container': localStorage.getItem('headerSelecionado'),
         'menu-container': localStorage.getItem('menuSelecionado'),
@@ -80,27 +87,18 @@
         'forms-container': localStorage.getItem('formsSelecionado'),
         'footer-container': localStorage.getItem('footerSelecionado')
       };
-
+      
       for (const [id, content] of Object.entries(containers)) {
-        const element = exportBody.querySelector(`#${id}`);
+        const element = htmlDoc.getElementById(id);
         if (element && content) {
           element.innerHTML = content;
         }
       }
-
-      // Gerar o HTML final
-      const fullHTML = `<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Página Exportada</title>
-  <style>${combinedCSS}</style>
-</head>
-${exportBody.innerHTML}
-</html>`;
       
-      // Criar e disparar o download
+      // 4. Geramos o HTML final
+      const fullHTML = htmlDoc.documentElement.outerHTML;
+      
+      // 5. Criamos e disparamos o download
       const blob = new Blob([fullHTML], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
