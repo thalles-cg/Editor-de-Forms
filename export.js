@@ -39,7 +39,7 @@ function exportarHeader() {
   localStorage.setItem('headerSelecionado', clone.outerHTML);
 
   // Redirecionar para a visualização
-  window.location.href = 'preview.html';
+  window.location.href = '/Editor-de-Forms/preview.html';
 }
 
 function exportarMenu() {
@@ -51,7 +51,7 @@ function exportarMenu() {
   const clone = menu.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('menuSelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/Editor-de-Forms/preview.html';
 }
 
 function exportarFooter() {
@@ -63,7 +63,7 @@ function exportarFooter() {
   const clone = footer.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('footerSelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/Editor-de-Forms/preview.html';
 }
 
 function exportarGallery() {
@@ -75,7 +75,7 @@ function exportarGallery() {
   const clone = gallery.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('gallerySelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/Editor-de-Forms/preview.html';
 }
 
 function exportarForm() {
@@ -87,7 +87,7 @@ function exportarForm() {
   const clone = forms.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('formsSelecionado', clone.outerHTML);
-  window.location.href = 'preview.html';
+  window.location.href = '/Editor-de-Forms/preview.html';
 }
 
 // Função recursiva que aplica todos os estilos CSS computados como inline
