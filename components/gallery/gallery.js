@@ -18,7 +18,7 @@ document.querySelector("#cardBorderColor").addEventListener("input", mudarCorBor
 
 
 function adicionarCard(){
-    const form_content = document.querySelector(".card-content");
+    const card_content = document.querySelector(".card-content");
 
     let card = document.createElement("div");
     card.classList.add("card");
@@ -61,7 +61,7 @@ function adicionarCard(){
 
 
     card.appendChild(controls)
-    form_content.appendChild(card);
+    card_content.appendChild(card);
 
     let img = document.createElement("div");
     img.classList.add("card-picture");
@@ -116,11 +116,9 @@ function atualizarPropriedades(){
     let image = elementoSelecionado.querySelector(".card-picture");
     document.querySelector("#showImage").checked = image.style.display !== "none";
     
-    // Atualizar título
     let title = elementoSelecionado.querySelector(".card-title p").textContent;
     document.querySelector("#addTitle").value = title;
     
-    // Atualizar descrição
     let desc = elementoSelecionado.querySelector(".card-desc p").textContent;
     document.querySelector("#addText").value = desc;
 }
