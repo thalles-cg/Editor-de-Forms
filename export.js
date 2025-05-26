@@ -20,54 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (exportFormBtn) {
     exportFormBtn.addEventListener("click", exportarForm);
   }
-
-  // --- Galeria: Restauração e Salvamento Automático ---
-  const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
-  const galeriaSalva = localStorage.getItem("gallerySelecionado");
-
-  if (galeriaSalva && galeria) {
-    const container = document.createElement('div');
-    container.innerHTML = galeriaSalva;
-    const novaGaleria = container.firstElementChild;
-
-    if (novaGaleria) {
-      galeria.parentNode.replaceChild(novaGaleria, galeria);
-      inicializarEventosGaleria(novaGaleria);
-    }
-  }
-
-  const galeriaAtual = document.querySelector('.card-content[data-form-id="gallery"]');
-  if (galeriaAtual) {
-    const observer = new MutationObserver(() => {
-      localStorage.setItem("gallerySelecionado", galeriaAtual.outerHTML);
-    });
-
-    observer.observe(galeriaAtual, { childList: true, subtree: true });
-    inicializarEventosGaleria(galeriaAtual);
-  }
 });
 
-function inicializarEventosGaleria(galeriaEl) {
-  galeriaEl.addEventListener("click", function (event) {
-    const target = event.target;
-
-    if (target.classList.contains("editar-imagem")) {
-      event.preventDefault();
-      console.log("Editar imagem:", target);
-      // Lógica de edição vai aqui
-    }
-
-    if (target.classList.contains("remover-imagem")) {
-      event.preventDefault();
-      const item = target.closest(".item-imagem");
-      if (item) {
-        item.remove();
-        console.log("Imagem removida");
-        // Salvamento automático já ocorre pelo MutationObserver
-      }
-    }
-  });
-}
 
 function exportarHeader() {
   const header = document.querySelector('.sub-header[data-form-id="header"]');
