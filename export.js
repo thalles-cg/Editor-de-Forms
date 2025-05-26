@@ -21,121 +21,120 @@ document.addEventListener("DOMContentLoaded", function () {
     exportFormBtn.addEventListener("click", exportarForm);
   }
 
+  // --- Galeria: Restauração e Salvamento Automático ---
+  const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
   const galeriaSalva = localStorage.getItem("gallerySelecionado");
 
-  if (galeriaSalva) {
-    const galeria = document.querySelector('.card-content[data-form-id="gallery"]');
+  if (galeriaSalva && galeria) {
     const container = document.createElement('div');
     container.innerHTML = galeriaSalva;
-
     const novaGaleria = container.firstElementChild;
 
-    if (galeria && galeria.parentNode && novaGaleria) {
+    if (novaGaleria) {
       galeria.parentNode.replaceChild(novaGaleria, galeria);
+      inicializarEventosGaleria(novaGaleria);
     }
+  }
+
+  const galeriaAtual = document.querySelector('.card-content[data-form-id="gallery"]');
+  if (galeriaAtual) {
+    const observer = new MutationObserver(() => {
+      localStorage.setItem("gallerySelecionado", galeriaAtual.outerHTML);
+    });
+
+    observer.observe(galeriaAtual, { childList: true, subtree: true });
+    inicializarEventosGaleria(galeriaAtual);
   }
 });
 
+function inicializarEventosGaleria(galeriaEl) {
+  galeriaEl.addEventListener("click", function (event) {
+    const target = event.target;
+
+    if (target.classList.contains("editar-imagem")) {
+      event.preventDefault();
+      console.log("Editar imagem:", target);
+      // Lógica de edição vai aqui
+    }
+
+    if (target.classList.contains("remover-imagem")) {
+      event.preventDefault();
+      const item = target.closest(".item-imagem");
+      if (item) {
+        item.remove();
+        console.log("Imagem removida");
+        // Salvamento automático já ocorre pelo MutationObserver
+      }
+    }
+  });
+}
+
 function exportarHeader() {
   const header = document.querySelector('.sub-header[data-form-id="header"]');
-  if (!header) {
-    alert('Cabeçalho não encontrado.');
-    return;
-  }
+  if (!header) return alert('Cabeçalho não encontrado.');
 
-  // Clonar o conteúdo que será exportado
   const clone = header.cloneNode(true);
-
-  // Aplicar os estilos computados como inline
   applyInlineStyles(clone);
-
-  // Salvar no localStorage
   localStorage.setItem('headerSelecionado', clone.outerHTML);
-
-  // Redirecionar para a visualização
-  if (window.location.hostname.includes('github.io')) {
-  window.location.href = '/Editor-de-Forms/preview.html';
-  } else {
-    window.location.href = './preview.html';
-  }
+  redirecionarParaPreview();
 }
 
 function exportarMenu() {
   const menu = document.querySelector('.menu[data-form-id="menu"]');
-  if (!menu) {
-    alert('Menu não encontrado.');
-    return;
-  }
+  if (!menu) return alert('Menu não encontrado.');
+
   const clone = menu.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('menuSelecionado', clone.outerHTML);
-
-  if (window.location.hostname.includes('github.io')) {
-  window.location.href = '/Editor-de-Forms/preview.html';
-  } else {
-    window.location.href = './preview.html';
-  }
+  redirecionarParaPreview();
 }
 
 function exportarFooter() {
   const footer = document.querySelector('.sub-header[data-form-id="footer"]');
-  if (!footer) {
-    alert('Footer não encontrado.');
-    return;
-  }
+  if (!footer) return alert('Footer não encontrado.');
+
   const clone = footer.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('footerSelecionado', clone.outerHTML);
-
-  if (window.location.hostname.includes('github.io')) {
-  window.location.href = '/Editor-de-Forms/preview.html';
-  } else {
-    window.location.href = './preview.html';
-  }
+  redirecionarParaPreview();
 }
 
 function exportarGallery() {
   const gallery = document.querySelector('.card-content[data-form-id="gallery"]');
-  if (!gallery) {
-    alert('Gallery não encontrado.');
-    return;
-  }
+  if (!gallery) return alert('Gallery não encontrado.');
+
   const clone = gallery.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('gallerySelecionado', clone.outerHTML);
-
-  if (window.location.hostname.includes('github.io')) {
-  window.location.href = '/Editor-de-Forms/preview.html';
-  } else {
-    window.location.href = './preview.html';
-  }
+  redirecionarParaPreview();
 }
 
 function exportarForm() {
   const forms = document.querySelector('.form-content[data-form-id="forms"]');
-  if (!forms) {
-    alert('Forms não encontrado.');
-    return;
-  }
+  if (!forms) return alert('Forms não encontrado.');
+
   const clone = forms.cloneNode(true);
   applyInlineStyles(clone);
   localStorage.setItem('formsSelecionado', clone.outerHTML);
+  redirecionarParaPreview();
+}
 
+function redirecionarParaPreview() {
   if (window.location.hostname.includes('github.io')) {
-  window.location.href = '/Editor-de-Forms/preview.html';
+    window.location.href = '/Editor-de-Forms/preview.html';
   } else {
     window.location.href = './preview.html';
   }
 }
 
-// Função recursiva que aplica todos os estilos CSS computados como inline
+// Aplica estilos computados como inline
 function applyInlineStyles(element) {
   const computedStyle = window.getComputedStyle(element);
   for (const prop of computedStyle) {
     try {
       element.style[prop] = computedStyle.getPropertyValue(prop);
     } catch (e) {
-      // Alguns estilos podem ser somente leitura, ignorar erros
+      // Ignorar erros de propriedades somente leitura
     }
   }
 
@@ -143,5 +142,3 @@ function applyInlineStyles(element) {
     applyInlineStyles(child);
   }
 }
-
-
