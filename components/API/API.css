@@ -49,11 +49,12 @@ blockquote {
     padding: 15px;
     border-radius: 8px;
     text-align: center; 
+    color: white;
 }
 
 blockquote footer {
     margin-top: 10px;
     font-size: 0.9em;
     text-align: right;
-    color: #9b9999;
+    color: #787878;
 }
