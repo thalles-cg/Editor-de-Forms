@@ -4,38 +4,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (callApisButton && apiOutputSection) {
         callApisButton.addEventListener('click', async () => {
-            apiOutputSection.innerHTML = '<h3>Resultados das APIs</h3><p>Carregando imagens e mensagem...</p>'; // Mensagem de carregamento
+            apiOutputSection.innerHTML = '<h3>Resultados das APIs</h3><p>Carregando imagens e mensagem...</p>'; 
 
-            // APIs que serão chamadas em conjunto
-            const dogImageUrl = 'https://dog.ceo/api/breeds/image/random'; // Imagem aleatória de cachorro
-            const catImageUrl = 'https://api.thecatapi.com/v1/images/search'; // Imagem aleatória de gato (retorna um array)
-            const quoteUrl = 'https://api.quotable.io/random'; // Mensagem (citação) aleatória com autor
+            const dogImageUrl = 'https://dog.ceo/api/breeds/image/random'; 
+            const catImageUrl = 'https://api.thecatapi.com/v1/images/search';
+            const quoteUrl = 'https://api.quotable.io/random'; 
 
             try {
-                // Usa Promise.all para fazer todas as chamadas API em paralelo
                 const [dogResponse, catResponse, quoteResponse] = await Promise.all([
                     fetch(dogImageUrl),
                     fetch(catImageUrl),
                     fetch(quoteUrl)
                 ]);
 
-                // Garante que todas as respostas foram bem-sucedidas (status 200 OK)
                 if (!dogResponse.ok) throw new Error(`HTTP error! status: ${dogResponse.status} from ${dogImageUrl}`);
                 if (!catResponse.ok) throw new Error(`HTTP error! status: ${catResponse.status} from ${catImageUrl}`);
                 if (!quoteResponse.ok) throw new Error(`HTTP error! status: ${quoteResponse.status} from ${quoteUrl}`);
 
-                // Converte as respostas para JSON
                 const dogData = await dogResponse.json();
-                const catData = await catResponse.json(); // Retorna um array, pegaremos o primeiro item
+                const catData = await catResponse.json(); 
                 const quoteData = await quoteResponse.json();
 
-                // Extrai as URLs das imagens e a citação/autor
                 const dogImageSrc = dogData.message;
-                const catImageSrc = catData[0].url; // A The Cat API retorna um array de objetos, pegamos a URL do primeiro
+                const catImageSrc = catData[0].url; 
                 const quoteContent = quoteData.content;
                 const quoteAuthor = quoteData.author;
 
-                // Gera o HTML com os dados das APIs
                 let generatedContent = `
                     <h3>Resultados das APIs</h3>
                     
@@ -54,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </blockquote>
                 `;
 
-                // Insere o conteúdo gerado na nova seção da página
                 apiOutputSection.innerHTML = generatedContent;
 
             } catch (error) {
