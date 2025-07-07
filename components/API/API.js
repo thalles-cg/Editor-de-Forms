@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const callApisButton = document.getElementById('call-apis-button');
-    const apiOutputSection = document.getElementById('api-output-section');
+    const apiOutputSection = document.getElementById('api-content');
 
     if (callApisButton && apiOutputSection) {
         callApisButton.addEventListener('click', async () => {
