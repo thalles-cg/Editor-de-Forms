@@ -1,3 +1,6 @@
+import { redirecionarParaPreview, applyInlineStyles } from './utils.js'; 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const exportHeaderBtn = document.querySelector("#exportHeaderBtn");
   const exportMenuBtn = document.querySelector("#exportMenuBtn");
@@ -32,9 +35,9 @@ function exportarHeader() {
   if (!header) return alert('Cabeçalho não encontrado.');
 
   const clone = header.cloneNode(true);
-  applyInlineStyles(clone);
+  applyInlineStyles(clone); 
   localStorage.setItem('headerSelecionado', clone.outerHTML);
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
 function exportarMenu() {
@@ -42,9 +45,9 @@ function exportarMenu() {
   if (!menu) return alert('Menu não encontrado.');
 
   const clone = menu.cloneNode(true);
-  applyInlineStyles(clone);
+  applyInlineStyles(clone); 
   localStorage.setItem('menuSelecionado', clone.outerHTML);
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
 function exportarFooter() {
@@ -52,9 +55,9 @@ function exportarFooter() {
   if (!footer) return alert('Footer não encontrado.');
 
   const clone = footer.cloneNode(true);
-  applyInlineStyles(clone);
+  applyInlineStyles(clone); 
   localStorage.setItem('footerSelecionado', clone.outerHTML);
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
 function exportarGallery() {
@@ -62,9 +65,9 @@ function exportarGallery() {
   if (!gallery) return alert('Gallery não encontrado.');
 
   const clone = gallery.cloneNode(true);
-  applyInlineStyles(clone);
+  applyInlineStyles(clone); 
   localStorage.setItem('gallerySelecionado', clone.outerHTML);
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
 function exportarForm() {
@@ -72,9 +75,9 @@ function exportarForm() {
   if (!forms) return alert('Forms não encontrado.');
 
   const clone = forms.cloneNode(true);
-  applyInlineStyles(clone);
+  applyInlineStyles(clone); 
   localStorage.setItem('formsSelecionado', clone.outerHTML);
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
 function exportarAPI() {
@@ -86,28 +89,6 @@ function exportarAPI() {
   const clone = apiContent.cloneNode(true);
   applyInlineStyles(clone); 
   localStorage.setItem('apiSelecionado', clone.outerHTML); 
-  redirecionarParaPreview();
+  redirecionarParaPreview(); 
 }
 
-
-function redirecionarParaPreview() {
-  if (window.location.hostname.includes('github.io')) {
-    window.location.href = '/Editor-de-Forms/preview.html';
-  } else {
-    window.location.href = './preview.html';
-  }
-}
-
-function applyInlineStyles(element) {
-  const computedStyle = window.getComputedStyle(element);
-  for (const prop of computedStyle) {
-    try {
-      element.style[prop] = computedStyle.getPropertyValue(prop);
-    } catch (e) {
-    }
-  }
-
-  for (const child of element.children) {
-    applyInlineStyles(child);
-  }
-}

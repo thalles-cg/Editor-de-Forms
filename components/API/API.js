@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="${catImageSrc}" alt="Imagem de Gato">
                     </div>
 
-                    <h4>Mensagem Aleatória</h4>
+                    <h4>Mensagem do dia</h4>
                     <blockquote>
                         "${quoteContent}"
                         <footer>— ${quoteAuthor}</footer>
