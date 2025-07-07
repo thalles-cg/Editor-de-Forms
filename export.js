@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const exportFooterBtn = document.querySelector("#exportFooterBtn");
   const exportGalleryBtn = document.querySelector("#exportGalleryBtn");
   const exportFormBtn = document.querySelector("#exportFormBtn");
-  const exportAPIyBtn = document.querySelector("#exportAPIyBtn");
+  const exportAPIBtn = document.querySelector("#exportAPIBtn");
 
   if (exportHeaderBtn) {
     exportHeaderBtn.addEventListener("click", exportarHeader);
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (exportFormBtn) {
     exportFormBtn.addEventListener("click", exportarForm);
   }
-  if (exportAPIyBtn) {
-    exportAPIyBtn.addEventListener("click", exportarAPI);
+  if (exportAPIBtn) {
+    exportAPIBtn.addEventListener("click", exportarAPI);
   }
 });
 
@@ -78,7 +78,7 @@ function exportarForm() {
 }
 
 function exportarAPI() {
-  const apiContent = document.querySelector('#api-content'); 
+  const apiContent = document.querySelector('#api-container'); 
   if (!apiContent) {
     return alert('Conteúdo da API não encontrado. Carregue o conteúdo primeiro.');
   }
