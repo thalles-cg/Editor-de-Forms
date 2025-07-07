@@ -1,5 +1,59 @@
-
 .edit-field {
     max-width: 300px;
     width: 100%;
+}
+
+#api-content { 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    padding: 20px; 
+    border: 1px solid #eee; 
+    border-radius: 8px; 
+    max-width: 700px; 
+    margin: 20px auto; 
+}
+
+#api-content h4 {
+    font-size: 1.4em;
+    margin-bottom: .7em;
+}
+
+.img-row {
+    display: flex; 
+    width: 100%; 
+    gap: 1em; 
+    justify-content: center; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    margin-bottom: 20px; 
+}
+
+.img-row img {
+    flex: 1; 
+    min-width: 150px; 
+    max-width: 48%; 
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 5px solid #5865f2;
+    padding-left: 15px;
+    max-width: 600px; 
+    line-height: 1.6;
+    background-color: #1A1A1A;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center; 
+}
+
+blockquote footer {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: right;
+    color: #555;
 }

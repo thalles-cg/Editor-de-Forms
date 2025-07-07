@@ -33,16 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const quoteAuthor = quoteArray[0].a; 
 
                 let generatedContent = `
-                    <img src="${dogImageSrc}" alt="Imagem de Cachorro" style="max-width: 300px; height: auto; display: block; margin: 0 auto 20px auto; border-radius: 8px;">
-                    <hr style="border: none; border-top: 1px dashed #ccc; margin: 20px 0;">
-
-                    <img src="${catImageSrc}" alt="Imagem de Gato" style="max-width: 300px; height: auto; display: block; margin: 0 auto 20px auto; border-radius: 8px;">
-                    <hr style="border: none; border-top: 1px dashed #ccc; margin: 20px 0;">
+                    <div class="img-row"><img src="${dogImageSrc}" alt="Imagem de Cachorro"">
+                    <img src="${catImageSrc}" alt="Imagem de Gato""></div>
 
                     <h4>Mensagem Aleatória</h4>
-                    <blockquote style="font-style: italic; border-left: 5px solid #007bff; padding-left: 15px; margin: 0 auto 20px auto; max-width: 600px; line-height: 1.6; background-color: #f9f9f9; padding: 15px; border-radius: 8px;">
+                    <blockquote>
                         "${quoteContent}"
-                        <footer style="margin-top: 10px; font-size: 0.9em; text-align: right; color: #555;">— ${quoteAuthor}</footer>
+                        <footer>— ${quoteAuthor}</footer>
                     </blockquote>
                 `;
 
