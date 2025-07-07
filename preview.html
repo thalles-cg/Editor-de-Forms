@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./components/header/header.css">
   <link rel="stylesheet" href="./components/menu/menu.css">
   <link rel="stylesheet" href="preview.css">
+  <link rel="stylesheet" href="./components/API/API.css"> 
   <title>Prévia do Formulário</title>
   <style>
     .btn {
@@ -26,21 +27,21 @@
       </div>
       <div id="forms-container"></div>
       <div id="gallery-container"></div>
+      <div id="api-container"></div> 
     </div>
     <div id="footer-container"></div>
   </main>
 
   <script>
-    // Carrega e exibe os dados na prévia
     function loadPreview() {
       document.getElementById('header-container').innerHTML = localStorage.getItem('headerSelecionado') || '<p>Nada exportado.</p>';
       document.getElementById('menu-container').innerHTML = localStorage.getItem('menuSelecionado') || '<p>Nada exportado.</p>';
       document.getElementById('gallery-container').innerHTML = localStorage.getItem('gallerySelecionado') || '<p>Nada exportado.</p>';
       document.getElementById('forms-container').innerHTML = localStorage.getItem('formsSelecionado') || '<p>Nada exportado.</p>';
       document.getElementById('footer-container').innerHTML = localStorage.getItem('footerSelecionado') || '<p>Nada exportado.</p>';
+      document.getElementById('api-container').innerHTML = localStorage.getItem('apiSelecionado') || '<p>Nada exportado.</p>';
     }
 
-    // Carrega a prévia ao iniciar
     loadPreview();
 
     async function fetchCSS(url) {
@@ -54,13 +55,13 @@
     }
 
     async function downloadFullHTML() {
-      // 1. Primeiro carregamos todos os CSS
       const cssFiles = [
         'style.css',
         './components/gallery/gallery.css',
         './components/header/header.css',
         './components/menu/menu.css',
-        'preview.css'
+        'preview.css',
+        './components/API/API.css' 
       ];
       
       let combinedCSS = '';
@@ -68,7 +69,6 @@
         combinedCSS += await fetchCSS(file) + '\n';
       }
       
-      // 2. Criamos um novo documento limpo
       const parser = new DOMParser();
       const htmlDoc = parser.parseFromString(`
         <!DOCTYPE html>
@@ -85,13 +85,13 @@
         </html>
       `, 'text/html');
       
-      // 3. Atualizamos os containers com os dados do localStorage
       const containers = {
         'header-container': localStorage.getItem('headerSelecionado'),
         'menu-container': localStorage.getItem('menuSelecionado'),
         'gallery-container': localStorage.getItem('gallerySelecionado'),
         'forms-container': localStorage.getItem('formsSelecionado'),
-        'footer-container': localStorage.getItem('footerSelecionado')
+        'footer-container': localStorage.getItem('footerSelecionado'),
+        'api-container': localStorage.getItem('apiSelecionado') 
       };
       
       for (const [id, content] of Object.entries(containers)) {
@@ -101,10 +101,8 @@
         }
       }
       
-      // 4. Geramos o HTML final
       const fullHTML = htmlDoc.documentElement.outerHTML;
       
-      // 5. Criamos e disparamos o download
       const blob = new Blob([fullHTML], { type: 'text/html' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

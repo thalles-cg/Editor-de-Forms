@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const exportFooterBtn = document.querySelector("#exportFooterBtn");
   const exportGalleryBtn = document.querySelector("#exportGalleryBtn");
   const exportFormBtn = document.querySelector("#exportFormBtn");
+  const exportAPIyBtn = document.querySelector("#exportAPIyBtn");
 
   if (exportHeaderBtn) {
     exportHeaderBtn.addEventListener("click", exportarHeader);
@@ -19,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (exportFormBtn) {
     exportFormBtn.addEventListener("click", exportarForm);
+  }
+  if (exportAPIyBtn) {
+    exportAPIyBtn.addEventListener("click", exportarAPI);
   }
 });
 
@@ -73,6 +77,19 @@ function exportarForm() {
   redirecionarParaPreview();
 }
 
+function exportarAPI() {
+  const apiContent = document.querySelector('#api-content'); 
+  if (!apiContent) {
+    return alert('Conteúdo da API não encontrado. Carregue o conteúdo primeiro.');
+  }
+
+  const clone = apiContent.cloneNode(true);
+  applyInlineStyles(clone); 
+  localStorage.setItem('apiSelecionado', clone.outerHTML); 
+  redirecionarParaPreview();
+}
+
+
 function redirecionarParaPreview() {
   if (window.location.hostname.includes('github.io')) {
     window.location.href = '/Editor-de-Forms/preview.html';
@@ -81,14 +98,12 @@ function redirecionarParaPreview() {
   }
 }
 
-// Aplica estilos computados como inline
 function applyInlineStyles(element) {
   const computedStyle = window.getComputedStyle(element);
   for (const prop of computedStyle) {
     try {
       element.style[prop] = computedStyle.getPropertyValue(prop);
     } catch (e) {
-      // Ignorar erros de propriedades somente leitura
     }
   }
 
