@@ -45,7 +45,7 @@ blockquote {
     padding-left: 15px;
     max-width: 600px; 
     line-height: 1.6;
-    background-color: #1A1A1A;
+    background-color: #313030;
     padding: 15px;
     border-radius: 8px;
     text-align: center; 
@@ -55,5 +55,5 @@ blockquote footer {
     margin-top: 10px;
     font-size: 0.9em;
     text-align: right;
-    color: #555;
+    color: #9b9999;
 }
