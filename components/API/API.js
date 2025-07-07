@@ -4,11 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (callApisButton && apiOutputSection) {
         callApisButton.addEventListener('click', async () => {
-            apiOutputSection.innerHTML = '<h3>Resultados das APIs</h3><p>Carregando imagens e mensagem...</p>'; 
+            apiOutputSection.innerHTML = '<h3>Resultados das APIs</h3><p>Carregando imagens e mensagem...</p>'; // Mensagem de carregamento
 
-            const dogImageUrl = 'https://dog.ceo/api/breeds/image/random'; 
-            const catImageUrl = 'https://api.thecatapi.com/v1/images/search';
-            const quoteUrl = 'https://api.quotable.io/random'; 
+            // APIs que serão chamadas em conjunto
+            const dogImageUrl = 'https://dog.ceo/api/breeds/image/random'; // Imagem aleatória de cachorro
+            const catImageUrl = 'https://api.thecatapi.com/v1/images/search'; // Imagem aleatória de gato (retorna um array)
+            // ---- ALTERAÇÃO AQUI (NOVA API DE CITAÇÃO) ----
+            const quoteUrl = 'https://zenquotes.io/api/random'; // NOVA API de Citação: ZenQuotes
+            // ---- FIM DA ALTERAÇÃO ----
 
             try {
                 const [dogResponse, catResponse, quoteResponse] = await Promise.all([
@@ -22,13 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!quoteResponse.ok) throw new Error(`HTTP error! status: ${quoteResponse.status} from ${quoteUrl}`);
 
                 const dogData = await dogResponse.json();
-                const catData = await catResponse.json(); 
-                const quoteData = await quoteResponse.json();
+                const catData = await catResponse.json();
+                const quoteArray = await quoteResponse.json(); // ZenQuotes retorna um array
 
+                // Extrai as URLs das imagens
                 const dogImageSrc = dogData.message;
-                const catImageSrc = catData[0].url; 
-                const quoteContent = quoteData.content;
-                const quoteAuthor = quoteData.author;
+                const catImageSrc = catData[0].url;
+
+                // ---- ALTERAÇÃO AQUI (ACESSO AOS DADOS DA NOVA API) ----
+                // A API ZenQuotes retorna um array, então pegamos o primeiro item (quoteArray[0])
+                const quoteContent = quoteArray[0].q; // A citação está na propriedade 'q'
+                const quoteAuthor = quoteArray[0].a; // O autor está na propriedade 'a'
+                // ---- FIM DA ALTERAÇÃO ----
 
                 let generatedContent = `
                     <h3>Resultados das APIs</h3>
