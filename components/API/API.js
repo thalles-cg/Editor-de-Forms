@@ -9,34 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
             // APIs que serão chamadas em conjunto
             const dogImageUrl = 'https://dog.ceo/api/breeds/image/random'; // Imagem aleatória de cachorro
             const catImageUrl = 'https://api.thecatapi.com/v1/images/search'; // Imagem aleatória de gato (retorna um array)
-            // ---- ALTERAÇÃO AQUI (NOVA API DE CITAÇÃO) ----
-            const quoteUrl = 'https://zenquotes.io/api/random'; // NOVA API de Citação: ZenQuotes
+            
+            // ---- ALTERAÇÃO AQUI: Usando um proxy CORS para a ZenQuotes ----
+            // A API original da ZenQuotes está bloqueando por CORS, então usamos um proxy.
+            const quoteUrl = 'https://api.allorigins.win/raw?url=https://zenquotes.io/api/random'; 
+            // 'https://api.allorigins.win/raw?url=' é um proxy público.
+            // Ele faz a requisição para 'https://zenquotes.io/api/random' do lado do servidor e te retorna os dados sem problemas de CORS.
             // ---- FIM DA ALTERAÇÃO ----
 
             try {
                 const [dogResponse, catResponse, quoteResponse] = await Promise.all([
                     fetch(dogImageUrl),
                     fetch(catImageUrl),
-                    fetch(quoteUrl)
+                    fetch(quoteUrl) 
+                    // Não precisa de { mode: 'no-cors' } com o proxy, ele já resolve o CORS.
                 ]);
 
                 if (!dogResponse.ok) throw new Error(`HTTP error! status: ${dogResponse.status} from ${dogImageUrl}`);
                 if (!catResponse.ok) throw new Error(`HTTP error! status: ${catResponse.status} from ${catImageUrl}`);
+                // Com o proxy allorigins, um status 200 (OK) já é suficiente.
                 if (!quoteResponse.ok) throw new Error(`HTTP error! status: ${quoteResponse.status} from ${quoteUrl}`);
 
                 const dogData = await dogResponse.json();
                 const catData = await catResponse.json();
-                const quoteArray = await quoteResponse.json(); // ZenQuotes retorna um array
+                const quoteArray = await quoteResponse.json(); // ZenQuotes ainda retorna um array
 
-                // Extrai as URLs das imagens
                 const dogImageSrc = dogData.message;
                 const catImageSrc = catData[0].url;
 
-                // ---- ALTERAÇÃO AQUI (ACESSO AOS DADOS DA NOVA API) ----
-                // A API ZenQuotes retorna um array, então pegamos o primeiro item (quoteArray[0])
-                const quoteContent = quoteArray[0].q; // A citação está na propriedade 'q'
-                const quoteAuthor = quoteArray[0].a; // O autor está na propriedade 'a'
-                // ---- FIM DA ALTERAÇÃO ----
+                // Acesso aos dados da ZenQuotes via proxy
+                const quoteContent = quoteArray[0].q; 
+                const quoteAuthor = quoteArray[0].a; 
 
                 let generatedContent = `
                     <h3>Resultados das APIs</h3>
@@ -62,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('Erro ao buscar dados das APIs:', error);
                 apiOutputSection.innerHTML = `
                     <h3>Resultados das APIs</h3>
-                    <p style="color: red; text-align: center;">Ocorreu um erro ao carregar o conteúdo divertido. Por favor, tente novamente.</p>
+                    <p style="color: red; text-align: center;">Ocorreu um erro ao carregar o conteúdo. Por favor, tente novamente.</p>
                     <p style="color: red; text-align: center; font-size: 0.8em;">Detalhes: ${error.message}</p>
                 `;
             }
